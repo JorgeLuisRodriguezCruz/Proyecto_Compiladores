@@ -8,16 +8,16 @@
 ; *************************************************************
 
 datos segment
-    Base        dw 10             ; Base para la rutina printAX
-    Bitset      dw 0              ; Variable de 16 bits para el conjunto
-    IsFirst     db 1              ; Bandera para control de comas (1=Verdadero)
+    Base        dw 10
+    ; El bitset de 256 bits requiere 32 bytes (32 * 8 = 256)
+    Bitset      db 32 dup(0)      
+    IsFirst     db 1              ; Control para no poner coma al inicio
+    Divisor     db 8              ; Usado para calcular posicion de bit
     
-    ; Mensajes de la interfaz
-    MsgCount    db "Cuantos elementos desea agregar (1-9)? $"
-    MsgInput    db 13, 10, "Ingrese numero (0-9): $"
+    MsgCount    db "Cuantos caracteres desea agregar (1-9)? $"
+    MsgInput    db 13, 10, "Ingrese caracter: $"
     MsgOutput   db 13, 10, "Resultado: $"
     
-    ; Formato de conjunto
     OpenB       db "{ $"
     CloseB      db " }$"
     Coma       db ", $"
@@ -30,75 +30,54 @@ pila endS
 codigo segment
     Assume CS:codigo, DS:datos, SS:pila
 
-; --- Subrutina printAX ---
-printAX proc near    
-    push AX
-    push BX
-    push CX                           
-    push DX
-    xor cx, cx
-    mov bx, Base
-ciclo1PAX: xor dx, dx
-    div bx
-    push dx
-    inc cx
-    cmp ax, 0
-    jne ciclo1PAX
-    mov ah, 02h
-ciclo2PAX: pop DX
-    add dl, 30h
-    cmp dl, 39h
-    jbe prnPAX
-    add dl, 7
-prnPAX: int 21h
-    loop ciclo2PAX 
-    pop DX
-    pop CX
-    pop BX
-    pop AX
-    ret
-printAX endP
-
 inicio:
-    ; Inicialización del segmento de datos
+    ; Inicializar segmento de datos
     mov ax, datos
     mov ds, ax
 
-    ; 1. ENTRADA: Preguntar cantidad de elementos
+    ; Cantidad de caracteres
     lea dx, MsgCount
     mov ah, 09h
     int 21h
 
-    mov ah, 01h                ; Leer cantidad
+    mov ah, 01h                ; Leer cantidad (1-9)
     int 21h
-    sub al, 30h                ; Convertir ASCII a número
+    sub al, 30h                ; Convertir ASCII a numero
     xor ah, ah
-    mov cx, ax                 ; Usar CX como contador del bucle
+    mov cx, ax                 ; Contador para el bucle de entrada
     
-    jcxz mostrar_resultado     ; Si la cantidad es 0, saltar a la salida
+    jcxz mostrar_resultado     ; Si es 0, ir a la salida
 
-    ; 2. ALMACENAMIENTO: Bucle para capturar y encender bits
+    ; Bucle para capturar caracteres y encender bits
 bucle_captura:
-    push cx                    ; Guardar contador del bucle
+    push cx                    
     
     lea dx, MsgInput
     mov ah, 09h
     int 21h
 
-    mov ah, 01h                ; Leer el número (0-9)
-    int 21h
-    sub al, 30h                ; Convertir a valor numérico
+    mov ah, 01h                ; Leer el caracter deseado
+    int 21h                    ; El codigo ASCII queda en AL (0-255)
     
-    ; Lógica de Bitset (Encender el bit en la posición AL)
-    mov cl, al                 ; CL indica el desplazamiento
-    mov ax, 1                  ; Cargamos un bit base
-    shl ax, cl                 ; Desplazamos el bit a la posición n
-    or Bitset, ax              ; Aplicamos OR para agregar al conjunto
+    ; --- Logica para encender el bit correspondiente al ASCII ---
+    ; Byte_Index = ASCII / 8
+    ; Bit_Index  = ASCII % 8
+    xor ah, ah                 ; AX = ASCII
+    div Divisor                ; AL = Cociente (Byte), AH = Residuo (Bit)
+    
+    mov bx, offset Bitset
+    add bl, al                 ; BX apunta al byte correcto dentro del Bitset
+    adc bh, 0
+    
+    mov cl, ah                 ; Preparamos el desplazamiento con el residuo
+    mov al, 1
+    shl al, cl                 ; Creamos la mascara de bit
+    or [bx], al                ; Encendemos el bit en la memoria (Bitwise OR)
 
-    pop cx                     ; Recuperar contador
+    pop cx
     loop bucle_captura
 
-    ; 3. SALIDA: Despliegue formateado { 1, 2, 3 }
+    ; Despliegue del conjunto { 'a', 'b', 'c' }
 mostrar_resultado:
     lea dx, MsgOutput
     mov ah, 09h
@@ -110,38 +89,54 @@ mostrar_resultado:
 
     
 
-    mov cx, 0                  ; Contador para recorrer los 16 bits (0-15)
-recorrer_bits:
-    mov ax, 1
-    push cx                    ; Guardar índice actual
-    shl ax, cl                 ; Crear máscara para el bit actual
-    test Bitset, ax            ; Verificar si el bit está activo (1)
-    jz siguiente_bit           ; Si es 0, el elemento no existe
-
-    ; --- Lógica de la coma ---
-    cmp IsFirst, 1             ; ¿Es el primer elemento encontrado?
-    je imprimir_dato           ; Si es el primero, no imprimimos coma
+    ; Recorremos los 256 posibles bits (0 a 255)
+    mov cx, 0                  ; CX sera nuestro indice de caracter ASCII
+recorrer_set:
+    push cx                    ; Guardamos el indice actual
     
-    lea dx, Coma               ; Si no es el primero, imprimir ", "
+    ; Calcular posicion del bit actual
+    mov ax, cx
+    div Divisor                ; AL = Byte, AH = Bit
+    
+    mov bx, offset Bitset
+    add bl, al
+    adc bh, 0
+    
+    mov cl, ah
+    mov al, 1
+    shl al, cl
+    test [bx], al              ; ¿El bit esta encendido?
+    jz siguiente_char          ; Si es 0, no esta en el conjunto
+
+    ; --- Logica de formato ---
+    cmp IsFirst, 1
+    je imprimir_char
+    lea dx, Coma               ; Imprimir coma si no es el primero
     mov ah, 09h
     int 21h
 
-imprimir_dato:
-    mov IsFirst, 0             ; Apagar bandera de "primero"
-    mov ax, cx                 ; Preparar AX con el índice para printAX
-    call printAX
+imprimir_char:
+    mov IsFirst, 0             ; Ya encontramos el primero
+    pop cx
+    push cx                    ; Recuperamos el valor ASCII
+    mov dl, cl                 ; DL = caracter a imprimir
+    mov ah, 02h                ; Funcion para imprimir un solo caracter
+    int 21h
+    jmp saltar_pop
 
-siguiente_bit:
-    pop cx                     ; Recuperar índice
+siguiente_char:
+    pop cx                     ; Recuperamos indice si no imprimimos nada
+
+saltar_pop:
     inc cx
-    cmp cx, 16                 ; ¿Revisamos los 16 bits de la variable dw?
-    jne recorrer_bits
+    cmp cx, 256                ; ¿Terminamos de revisar todos los ASCII?
+    jne recorrer_set
 
     lea dx, CloseB             ; Imprimir "}"
     mov ah, 09h
     int 21h
 
-    ; Finalizar programa (ah=4Ch)
+    ; Finalizar programa
     mov ah, 4Ch
     int 21h
 codigo endS
