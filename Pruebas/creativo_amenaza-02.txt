@@ -42,6 +42,6 @@ comportamiento
 
 nucleo {
 
-    principal (0);
+    principal ("", 0);
 
 } .
