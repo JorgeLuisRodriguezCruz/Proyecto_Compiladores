@@ -1,0 +1,4 @@
+bioma Saludo;
+nucleo
+  transmitir('Bienvenido al sistema Bioma');
+.

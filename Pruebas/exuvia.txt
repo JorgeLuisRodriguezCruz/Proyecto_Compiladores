@@ -1,0 +1,12 @@
+/*/ En este programa se prueba un función básica sin retorno
+
+bioma PruebaRutina;
+exuvia
+  capacidad aviso();
+comportamiento
+  capacidad aviso() {
+    transmitir('Alerta de bioma');
+  };
+nucleo
+  aviso();
+.

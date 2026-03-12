@@ -1,0 +1,16 @@
+/*/ En este programa se solicita que se ingrese la temperatura del ambiente, para evaluar si es estable.
+
+bioma PruebaAtraeRepele;
+pelajes
+  clima: hormiga;
+nucleo
+  transmitir('Temperatura: ');
+  percibir(clima);
+  cortejo (clima > 30)
+  atrae {
+    transmitir('Calor extremo');
+  }
+  repele {
+    transmitir('Clima estable');
+  };
+.

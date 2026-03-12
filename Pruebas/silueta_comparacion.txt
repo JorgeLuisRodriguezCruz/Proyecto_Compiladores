@@ -1,0 +1,12 @@
+/*/ En este programa se compara si dos siluetas son iguales
+
+bioma CompararSilueta;
+pelajes
+  letra: silueta;
+nucleo
+  letra := 'A';
+  cortejo (letra == 'A')
+  atrae {
+    transmitir('Caracter identificado');
+  };
+.

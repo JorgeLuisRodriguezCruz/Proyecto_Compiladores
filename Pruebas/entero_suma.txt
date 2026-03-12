@@ -1,0 +1,14 @@
+/*/ En este programa se solicita que se ingresen dos números enteros para después sumarlos.
+
+bioma SumaHormigas;
+pelajes
+  a, b, resultado: hormiga;
+nucleo
+  transmitir('Ingrese primer numero: ');
+  percibir(a);
+  transmitir('Ingrese segundo numero: ');
+  percibir(b);
+  resultado := a + b;
+  transmitir('El resultado es: ');
+  transmitir(resultado);
+.

@@ -1,0 +1,15 @@
+/*/ Se realiza una pequeña prueba de instinto
+
+bioma PruebaRetorno;
+exuvia
+  capacidad duplicar(n: hormiga): hormiga;
+comportamiento
+  capacidad duplicar(n: hormiga): hormiga {
+    reaccion n * 2;
+  };
+pelajes
+  val: hormiga;
+nucleo
+    val := duplicar(5);
+    transmitir(val);
+.
