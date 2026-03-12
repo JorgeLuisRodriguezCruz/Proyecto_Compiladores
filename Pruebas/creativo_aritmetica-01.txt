@@ -1,0 +1,42 @@
+/*/ Este programa es una prueba de la instruccion intruccion aritmetica >>
+/*/ En este tenemos una funcion que recibe dos numeros y eleva la base segun una potencia que reciba y funciona hasta la potencia de 5.
+bioma aritmeticaCreativa; 
+
+pelajes    
+    numero: hormiga;  
+
+exuvia
+
+    /*/ Esta funcion recibe dos numeros la base y la potencia 
+    /*/ La potencian pude llegar hasta 5 
+    capacidad elevar (base: hormiga, potencia: hormiga): hormiga;
+
+comportamiento
+    
+    capacidad elevar (base: hormiga, potencia: hormiga) {
+        dieta(potencia) { 
+            alimento (2):
+                reaccion num >> bajo;
+            alimento (3):
+                reaccion num >> medio;
+            alimento (4):
+                reaccion num >> alto;
+            alimento (5):
+                reaccion num >> maximo;
+            hambre:
+                reaccion num >> minimo;
+        }; 
+    }
+
+nucleo {
+
+    numero = elevar (2, 2);
+
+    /*/ Aqui se identifica si la operacion da el resultado esperado
+    cortejo (numero == 4) atrae { 
+        transmitir ("2 elevado al cuadrado es 4."); 
+    } repele { 
+        transmitir ("2 elevado al cuadrado es un misterio.");  
+    };
+
+} .

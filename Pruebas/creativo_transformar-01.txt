@@ -1,0 +1,28 @@
+/*/ Este programa es una prueba de la instruccion transformar
+/*/ En este dependiendo del valor que tome un numero se transforma una variable a un tipo u otro 
+
+bioma cambioConstante;
+
+pelajes
+    num: hormiga;
+    peligro: instinto; 
+
+nucleo {
+ 
+    num = 2; 
+
+    dieta (num) {
+        alimento (1):
+            num = transformar: peligro;
+            peligro = luchar;               /*/ Luchar corresponde a true
+        alimento (2):            
+            num = transformar: instinto;
+            peligro = correr;
+        hambre:
+            transmitir("Algo no va bien...");
+    };
+
+    cortejo( peligro ) atrae { transmitir("A cambiado a un peligro."); };
+    cortejo( peligro ) atrae { transmitir("A cambiado a un booleano"); };
+
+} .

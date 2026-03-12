@@ -1,0 +1,26 @@
+/*/ Este programa es una prueba de la instruccion renacer
+/*/ En este pido respuestas y la voy reseteando con renacer para actualizarla 
+bioma renixMolesto; 
+
+pelajes    
+    cantidad: hormiga;  
+    respuesta: adn;
+
+nucleo {
+    
+    transmitir ("Cuantos vienen al mar?");  /*/ Se recibe envia solicitud     
+    percibir(respuesta);                    /*/ Se recibe respuesta 
+    cantidad = (:hormiga:) respuesta;       /*/ Se almacena en formato entero
+ 
+    cortejo ( amenaza(maximo) ) atrae { 
+        transmitir ("Va a ser muy peligroso. Cuantos vienen?"); 
+        
+        renacer(respuesta);
+        renacer(cantidad);
+
+        cantidad = (:hormiga:) respuesta;
+    }; 
+
+    transmitir ("Ah bueno entonces esperamos a los:"); 
+    transmitir ( (:adn:) cantidad ); 
+} .

@@ -1,0 +1,29 @@
+/*/ Este programa es una prueba de la instruccion creativa amenaza
+/*/ En este se crea una funcion que indica el nivel de peligro, mostrando de forma mas literal el uso de la instruccion amenaza
+bioma depredando;  
+
+pelajes
+    resultado: instinto;
+
+exuvia
+
+    /*/ Esta funcion recibe un nuvel de peligro e indica si es peligroso    
+    capacidad es_peligroso (nivel: peligro): instinto;
+
+comportamiento
+    
+    capacidad es_peligroso (nivel: peligro) { 
+        reaccion amenaza (nivel);
+    };
+
+nucleo {
+
+    resultado = es_peligroso (Alto);
+
+    cortejo ( resultado ) atrae { 
+        transmitir ("Correeeeee"); 
+    } repele { 
+        transmitir ("A dormir zzz...");  
+    };
+
+} .
