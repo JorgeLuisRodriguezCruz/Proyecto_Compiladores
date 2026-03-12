@@ -1,0 +1,47 @@
+/*/ Este programa es una prueba de la instruccion creativa amenaza
+/*/ En este se crea un menu interactuable usando la amenaza como medio para dar respuesta a una entrada
+bioma maquinando;  
+
+exuvia
+ 
+    capacidad obtener-peligro (nivel: hormiga): peligro;    /*/ funcion
+    conducta principal (respuestas:adn, opcion: hormiga);   /*/ procedimiento
+
+comportamiento
+
+    /*/ Esta funcion recibe un entero y retorna el nivel de peligro asociado
+    capacidad obtener-peligro (nivel: hormiga) {
+        dieta(nivel) {
+            alimento(1):
+                reaccion minimo;
+            hambre:
+                reaccion maximo;
+        };
+    };
+    
+    conducta principal (respuestas:adn, opcion: hormiga) {  
+        transmitir("Como te sientes?");
+        transmitir("1. bien");
+        transmitir("2. debastado"); 
+        transmitir("Elige una de las dos opciones:"); 
+
+        /*/ Se hace la cohercion de la respuesta para tenerla en un entero
+        percibir( respuesta )
+        opcion = (:hormiga:) respuesta;
+
+        /*/ En esta instruccion se pasa la opcion escogida a la funcion para obtener el peligro para estimar la amenaza
+        cortejo ( amenaza (obtener-peligro( opcion )) ) atrae {
+
+            transmitir("Eso me preocupa, llame al siguiente numero y pida ayuda YA!!: xxxx-xxxx"); 
+
+        } repele {
+            transmitir("Me alegro que tengas un buen dia."); 
+        };
+
+    };
+
+nucleo {
+
+    principal ("", 0);
+
+} .
