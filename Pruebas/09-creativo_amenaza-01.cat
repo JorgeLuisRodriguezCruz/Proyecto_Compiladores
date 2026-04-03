@@ -1,0 +1,23 @@
+=^.^= Este programa es una prueba de la instruccion creativa amenaza
+=^.^= En este se crea una funcion que indica el nivel de peligro, mostrando de forma mas literal el uso de la instruccion amenaza
+Reino depredando ~
+
+Organismos
+    resultado <- habita Gato ~
+~~ 
+Comportamientos
+    =^.^= Esta funcion recibe un nuvel de peligro e indica si es peligroso devolviendo un valor Gato
+    entrenar es_peligroso(peligro nivel) Gato
+    plancton
+        Perro amenaza(nivel) ~
+    delfin
+~~
+Nacimiento
+    resultado adopta es_peligroso(Alto) ~
+
+    cortejo resultado
+    atrae
+        rugirSerpiente("Correeeeee") ~ 
+    repele
+        rugirSerpiente("A dormir zzz...") ~ ~
+Muerte depredando ~~

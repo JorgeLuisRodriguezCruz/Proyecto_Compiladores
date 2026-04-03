@@ -1,0 +1,15 @@
+=^.^= Este programa es una prueba de la instruccion migrar su equivalente tradicional es el for
+=^.^= En este documento se muestra un ciclo que genera mensajes en cada ciclo
+Reino migrando ~
+
+Organismos
+	contador <- habita Oveja ~
+~~
+Nacimiento
+	=^.^= Se incrementa en 1 el valor de la variable con la instruccion Acariciar
+	=^.^= Equivalencia - for contador := 0 to 50 do 
+	migrar contador desde 0 hasta 50 paso 1 ruta
+		rugirSerpiente("Estoy en el ciclo") ~ ~      
+	rugirSerpiente("Por fin ya sali") ~
+	
+Muerte migrando ~~

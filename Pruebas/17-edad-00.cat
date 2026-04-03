@@ -1,0 +1,15 @@
+=^.^= En este programa se prueba si una persona es mayor de edad
+Reino VerificarEdad ~
+
+Organismos
+    edad <- habita Oveja ~
+~~
+Nacimiento
+    rugirSerpiente("Edad: ") ~
+    edad adopta olerOveja() ~
+    cortejo edad hibrido 18
+    atrae
+        rugirSerpiente("Es un especimen adulto") ~ ~
+    
+
+Muerte VerificarEdad ~~

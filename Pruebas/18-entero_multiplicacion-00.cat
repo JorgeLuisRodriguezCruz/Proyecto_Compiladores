@@ -1,0 +1,15 @@
+=^.^= Este programa es de la multiplicacion, se calcula un area a partir de datos ya definidos.
+
+Reino AreaRectangulo ~
+
+Organismos
+    base <- habita Oveja adopta 10 ~
+    altura <- habita Oveja adopta 5 ~
+    area <- habita Oveja ~
+~~
+Nacimiento
+    area adopta base cuy altura ~
+    rugirSerpiente("Area calculada: ") ~
+    rugirOveja(area) ~ 
+
+Muerte AreaRectangulo ~~

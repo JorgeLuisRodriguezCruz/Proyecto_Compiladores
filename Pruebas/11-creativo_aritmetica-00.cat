@@ -1,0 +1,24 @@
+=^.^= Este programa es una prueba de la instruccion aritmetica >>
+=^.^= En este se crea una funcion que retorna un numero elevado al cuadrado usando la instruccion >> 
+Reino creativaAritmetica ~ 
+
+Organismos
+    numero <- habita Oveja adopta 2 ~  
+~~ 
+Comportamientos
+    entrenar elevar_cuadrado(Oveja num) Oveja
+    plancton
+        Perro num >> bajo ~
+    delfin
+~~
+Nacimiento
+    numero adopta elevar_cuadrado(numero) ~
+
+    =^.^= Aqui se identifica si la operacion da el resultado esperado
+    cortejo numero clon 4
+    atrae
+        rugirSerpiente("2 elevado al cuadrado es 4.") ~ 
+    repele
+        rugirSerpiente("2 elevado al cuadrado es un misterio.") ~ ~
+
+Muerte creativaAritmetica ~~

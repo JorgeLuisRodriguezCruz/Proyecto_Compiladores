@@ -1,0 +1,15 @@
+=^.^= En este programa se prueba la creacion de una Colmena
+Reino pruebaColmena ~
+
+Organismos
+    letras <- habita Colmena adopta { 'x' , 'y' , 'z' } ~
+~~
+Nacimiento
+    rugirColmena(letras) ~
+Muerte pruebaColmena ~~
+
+Permiteme darte algunas observaciones:
+
+    - Todas las secciones excepto la de Nacimiento terminan con ~~
+    - En la sección Nacimiento no hace falta colocar plancton y delfin apesar de que el cuerpo del doc tenga varias instrucciones
+    - Las instrucciones Acariciar y Reprender equivalente a incremento y decremento van como prefijos 

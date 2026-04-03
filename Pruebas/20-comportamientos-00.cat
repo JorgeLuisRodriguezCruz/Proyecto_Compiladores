@@ -1,0 +1,15 @@
+=^.^= En este programa se prueba una funcion basica sin retorno
+
+Reino PruebaRutina ~ 
+
+Comportamientos
+    ritual aviso()
+    plancton
+        rugirSerpiente("Alerta de bioma") ~
+    delfin
+~~
+
+Nacimiento
+    aviso() ~ 
+
+Muerte PruebaRutina ~~

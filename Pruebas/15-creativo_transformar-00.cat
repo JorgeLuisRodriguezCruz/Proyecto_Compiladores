@@ -1,0 +1,24 @@
+=^.^= Este programa es una prueba de la instruccion transformar
+=^.^= En este se transforma una variable entera para que almacene un string que se imprimira o mejor dicho transmitira
+Reino transformoMensaje ~
+
+Organismos
+    num <- habita Oveja adopta 2 ~
+~~
+Nacimiento
+    =^.^= Esta expresion debe dar 4
+    num adopta num >> bajo ~ 
+
+    =^.^= Se cambiaron el orden habitual de aparicion del atrae y repele 
+    cortejo num clon 4
+    repele
+        rugirSerpiente("Algo anda mal...") ~  
+    atrae
+        plancton
+            num adopta transformar Serpiente ~      =^.^= Transformamos de entero a string
+            num adopta "4" ~
+            rugirSerpiente("El resultado es el siguiente:") ~ 
+            rugirSerpiente(num) ~ 
+        delfin ~ 
+
+Muerte transformoMensaje ~~

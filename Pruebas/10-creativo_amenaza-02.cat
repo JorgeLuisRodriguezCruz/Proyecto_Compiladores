@@ -1,0 +1,40 @@
+=^.^= Este programa es una prueba de la instruccion creativa amenaza
+=^.^= En este se crea un menu interactuable usando la amenaza como medio para dar respuesta a una entrada
+Reino maquinando ~
+
+Comportamientos
+    =^.^= Esta funcion recibe un entero y retorna el nivel de peligro asociado
+    entrenar obtener_peligro(Oveja nivel) peligro
+    plancton
+        pulpo nivel
+        plancton
+            tentaculo 1 :
+                Perro minimo ~
+            cabeza
+                Perro maximo ~ 
+        delfin
+    delfin
+    
+    ritual principal(Serpiente respuesta, Oveja opcion)
+    plancton
+        rugirSerpiente("Como te sientes?") ~
+        rugirSerpiente("1. bien") ~
+        rugirSerpiente("2. debastado") ~ 
+        rugirSerpiente("Elige una de las dos opciones:") ~
+
+        =^.^= Se hace la cohercion de la respuesta para tenerla en un entero
+        respuesta adopta olerSerpiente() ~
+        opcion adopta Camaleon Oveja respuesta ~
+
+        =^.^= En esta instruccion se pasa la opcion escogida a la funcion para obtener el peligro para estimar la amenaza
+        cortejo amenaza obtener_peligro(opcion)
+        atrae
+            rugirSerpiente("Eso me preocupa, llame al siguiente numero y pida ayuda YA!!: xxxx-xxxx") ~ 
+        repele
+            rugirSerpiente("Me alegro que tengas un buen dia.") ~ ~
+    delfin
+~~
+Nacimiento
+    principal("", 0) ~
+
+Muerte maquinando ~~

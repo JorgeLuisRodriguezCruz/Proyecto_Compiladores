@@ -1,0 +1,20 @@
+=^.^= Se realiza una pequeña prueba de instinto
+Reino PruebaInstinto ~
+
+Organismos
+    esAdulto <- habita Gato ~
+    edad <- habita Oveja ~
+~~
+Nacimiento
+    rugirSerpiente("Edad: ") ~
+    edad adopta olerOveja() ~
+
+    esAdulto adopta edad hibrido 18 ~
+    
+    cortejo esAdulto
+    atrae
+        rugirSerpiente("Es mayor de edad") ~
+    repele
+        rugirSerpiente("Es menor de edad") ~ ~
+
+Muerte PruebaInstinto ~~
