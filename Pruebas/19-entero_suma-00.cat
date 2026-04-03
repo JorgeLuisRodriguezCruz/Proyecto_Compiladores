@@ -1,0 +1,21 @@
+=^.^= En este programa se solicita que se ingresen dos numeros enteros para despues sumarlos.
+Reino SumaHormigas ~
+
+Organismos
+    a <- habita Oveja ~
+    b <- habita Oveja ~
+    resultado <- habita Oveja ~
+~~
+Nacimiento
+    rugirSerpiente("Ingrese primer numero: ") ~
+    a adopta olerOveja() ~
+
+    rugirSerpiente("Ingrese segundo numero: ") ~
+    b adopta olerOveja() ~
+
+    resultado adopta a pez b ~
+
+    rugirSerpiente("El resultado es: ") ~
+    rugirOveja(resultado) ~
+
+Muerte SumaHormigas ~~

@@ -1,0 +1,14 @@
+=^.^= En este programa se prueba el uso de constantes.
+
+Reino PruebaConstantes ~
+Reserva
+    fosil Oveja LIMITE adopta 100 ~
+    fosil Oveja PI adopta 3 ~
+~~
+Organismos
+    valor <- habita Oveja ~
+~~
+Nacimiento
+    valor adopta LIMITE pez PI ~
+    rugirOveja(valor) ~
+Muerte PruebaConstantes ~~

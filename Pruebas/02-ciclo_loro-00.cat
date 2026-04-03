@@ -1,0 +1,17 @@
+=^.^= Este programa es una prueba de la instruccion loro su equivalente tradicional es el repeat
+=^.^= En este documento se muestra un ciclo que genera mensajes en cada ciclo
+Reino loroCiclon ~
+
+Organismos
+    contador <- habita Oveja adopta 0 ~
+~~
+Nacimiento 
+    loro 
+        plancton
+            contador adopta Acariciar contador ~        =^.^= Se incrementa en 1 el valor de la variable
+            rugirSerpiente("Estoy en el ciclo") ~
+        delfin
+    mudo contador presa 50 ~                            =^.^= Equivalencia - until (contador < 50);
+    rugirSerpiente("Por fin ya sali") ~ 
+
+Muerte loroCiclon ~~

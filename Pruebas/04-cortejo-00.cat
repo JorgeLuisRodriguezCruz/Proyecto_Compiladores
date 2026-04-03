@@ -1,0 +1,19 @@
+=^.^= En este programa se solicita que se ingrese la temperatura del ambiente, para evaluar si es estable.
+Reino PruebaAtraeRepele ~
+
+Organismos
+      clima <- habita Oveja ~
+~~
+Nacimiento
+	rugirSerpiente("Temperatura: ") ~
+	clima adopta olerOveja() ~
+
+	=^.^= Equivalencia - if clima > 30
+	cortejo clima depredador 30
+	atrae 
+		rugirSerpiente("Calor extremo") ~ 
+	repele 
+		rugirSerpiente("Clima estable") ~ ~ 
+
+Muerte PruebaAtraeRepele ~~
+

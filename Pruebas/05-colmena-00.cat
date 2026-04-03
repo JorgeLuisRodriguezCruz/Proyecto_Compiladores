@@ -1,0 +1,9 @@
+=^.^= En este programa se prueba la creacion de una Colmena
+Reino pruebaColmena ~
+
+Organismos
+    letras <- habita Colmena adopta { 'x' , 'y' , 'z' } ~
+~~
+Nacimiento
+    rugirColmena(letras) ~
+Muerte pruebaColmena ~~ 

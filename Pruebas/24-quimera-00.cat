@@ -1,0 +1,19 @@
+=^.^= En este programa se prueba el registro de una especie en un Reino
+Reino RegistroEspecie ~
+
+Especies
+    animal => Quimera 
+    plancton
+        id <- habita Oveja ~
+        tipo <- habita Serpiente ~
+    delfin ~
+~~
+Organismos
+    sujeto <- habita animal ~
+~~
+Nacimiento
+    sujeto@id adopta 505 ~
+    sujeto@tipo adopta "Mamifero" ~
+    rugirSerpiente(sujeto@tipo) ~ 
+
+Muerte RegistroEspecie ~~

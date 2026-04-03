@@ -1,0 +1,22 @@
+=^.^= Este programa es una prueba de la instruccion tiburon su equivalente tradicional es el While
+=^.^= En este documento se muestra un ciclo que genera mensajes en cada ciclo
+Reino tiburonTornado ~
+
+Organismos
+    contador <- habita Oveja adopta 0 ~
+~~
+Nacimiento 
+
+    tiburon contador presa 50 sangre                    =^.^= Equivalencia - While (contador < 50) do
+        plancton
+            contador adopta Acariciar contador ~        =^.^= Se incrementa en 1 el valor de la variable
+            rugirSerpiente("Estoy en el ciclo") ~
+        delfin ~ 
+    rugirSerpiente("Por fin ya sali") ~    
+
+Muerte tiburonTornado ~~
+
+
+
+
+

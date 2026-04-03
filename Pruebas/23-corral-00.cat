@@ -1,0 +1,12 @@
+=^.^= Programa de prueba de arreglos (Corral)
+Reino PruebaCorral ~
+
+Organismos
+    datos <- habita Corral Oveja [3] adopta {[ 10, 20, 30 ]} ~
+~~
+Nacimiento
+    rugirOveja(datos[0]) ~
+    rugirOveja(datos[1]) ~
+    rugirOveja(datos[2]) ~ 
+
+Muerte PruebaCorral ~~

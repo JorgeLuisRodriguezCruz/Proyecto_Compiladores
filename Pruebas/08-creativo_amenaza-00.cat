@@ -1,0 +1,18 @@
+=^.^= Este programa es una prueba de la instruccion creativa amenaza
+=^.^= En este se prueba una forma de crear un ciclo con la instruccion amenaza y valores de peligro
+Reino pruebaAmenaza ~
+
+Organismos
+    bandera <- habita peligro adopta minimo ~ 
+    mensaje <- habita Serpiente adopta "No estoy en peligro." ~
+~~
+Nacimiento
+    =^.^= Cuando el nivel de peligro de la bandera aumente lo suficiente se sale del ciclo
+    tiburon amenaza bandera clon vivo sangre
+        plancton
+            bandera adopta acechar bandera ~         =^.^= Esta instruccion incrementa el nivel de peligro
+            rugirSerpiente(mensaje) ~
+        delfin ~
+    mensaje adopta "Ahora estoy en peligro..." ~
+    rugirSerpiente(mensaje) ~ 
+Muerte pruebaAmenaza ~~

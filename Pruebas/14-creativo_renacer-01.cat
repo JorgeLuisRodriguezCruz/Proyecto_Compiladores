@@ -1,0 +1,28 @@
+=^.^= Este programa es una prueba de la instruccion renacer
+=^.^= En este pido respuestas y la voy reseteando con renacer para actualizarla 
+Reino renixMolesto ~ 
+
+Organismos
+    cantidad <- habita Oveja ~  
+    respuesta <- habita Serpiente ~
+~~
+Nacimiento
+    rugirSerpiente("Cuantos vienen al mar?") ~  =^.^= Se envia solicitud     
+    respuesta adopta olerSerpiente() ~          =^.^= Se recibe respuesta 
+    cantidad adopta respuesta Camaleon Oveja ~  =^.^= Se almacena en formato entero
+ 
+    cortejo amenaza maximo
+    atrae
+        plancton
+            rugirSerpiente("Va a ser muy peligroso. Cuantos vienen?") ~ 
+            
+            renacer respuesta ~
+            renacer cantidad ~
+
+            cantidad adopta respuesta Camaleon Oveja ~
+        delfin ~ 
+
+    rugirSerpiente("Ah bueno entonces esperamos a los:") ~ 
+    rugirSerpiente(cantidad Camaleon Serpiente) ~     
+
+Muerte renixMolesto ~~

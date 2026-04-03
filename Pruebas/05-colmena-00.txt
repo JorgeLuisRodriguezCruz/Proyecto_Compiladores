@@ -1,9 +1,0 @@
-/*/ En este programa se prueba la creación de una colmena
-
-bioma PruebaColmena;
-pelajes
-  letras: colmena;
-nucleo
-  letras := { 'x', 'y', 'z' };
-  transmitir(letras);
-.

@@ -1,0 +1,19 @@
+=^.^= En esta prueba se crea una funcion basica con retorno
+Reino PruebaRetorno ~
+
+Organismos
+    val <- habita Oveja ~
+~~ 
+
+Comportamientos
+    entrenar duplicar(Oveja n) Oveja
+    plancton
+        Perro n cuy 2 ~
+    delfin
+~~
+
+Nacimiento
+    val adopta duplicar(5) ~
+    rugirOveja(val) ~ 
+
+Muerte PruebaRetorno ~~

@@ -1,0 +1,12 @@
+=^.^= En este programa se compara si dos Huellas son iguales
+Reino CompararHuella ~
+
+Organismos
+    letra <- habita Huella adopta 'A' ~
+~~
+Nacimiento
+    cortejo letra clon 'A'
+    atrae
+        rugirSerpiente("Caracter identificado") ~ ~ 
+
+Muerte CompararHuella ~~
