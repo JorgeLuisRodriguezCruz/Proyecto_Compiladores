@@ -10,10 +10,10 @@ datos segment
     EsNegativo  db 0               ; Control para olerOveja
     
     ; Mensajes de Interfaz
-    MsgHUE      db 13, 10, "olerHuella: $"
-    MsgGAT      db 13, 10, "olerGato (Gato -> Oveja): $"
-    MsgPEL      db 13, 10, "olerPeligro (1-5 -> Oveja): $"
-    MsgSER      db 13, 10, "olerSerpiente (String -> Oveja): $"
+    MsgHUE      db 13, 10, "olerHuella (Ingrese un caracter): $"
+    MsgGAT      db 13, 10, "olerGato (1:vivo, 0:muerto): $"
+    MsgPEL      db 13, 10, "olerPeligro (1:Min, 2:Low, 3:Med, 4:High, 5:Max): $"
+    MsgSER      db 13, 10, "olerSerpiente: $"
     MsgCOL      db 13, 10, "olerColmena: Cuantas huellas desea agregar (1-9)? $"
     MsgInput    db 13, 10, "Ingrese huella: $"
     MsgErrorC   db 13, 10, "Error: Debe ser un digito entre 1 y 9. Intente de nuevo: $"
@@ -136,7 +136,7 @@ error_peligro:
 
 proximo_tipo:
     ; ---------------------------------------------------------
-    ; 4. Camaleon: SERPIENTE -> OVEJA (Con Validación de Dígitos)
+    ; 4. Camaleon: SERPIENTE -> OVEJA (Conversión String -> Número)
     ; ---------------------------------------------------------
     lea dx, MsgSER
     mov ah, 09h
@@ -259,7 +259,6 @@ bucle_captura:
     pop cx
     loop bucle_captura
 
-    ; (Se asume que la colmena tiene elementos tras olerColmena)
     xor ax, ax              ; Acumulador de cardinalidad
     mov cx, 32
     mov si, offset BitsetCol
