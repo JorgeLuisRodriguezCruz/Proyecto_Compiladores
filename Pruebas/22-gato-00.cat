@@ -2,8 +2,8 @@
 Reino PruebaInstinto ~
 
 Organismos
-    esAdulto <- habita Gato ~
-    edad <- habita Oveja ~
+    esAdulto habita Gato ~
+    edad habita Oveja ~
 ~~
 Nacimiento
     rugirSerpiente("Edad: ") ~

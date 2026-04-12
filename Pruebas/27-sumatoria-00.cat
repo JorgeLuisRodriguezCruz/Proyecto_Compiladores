@@ -2,9 +2,9 @@
 Reino SumaN ~
 
 Organismos
-    n <- habita Oveja adopta 10 ~
-    i <- habita Oveja adopta 1 ~
-    suma <- habita Oveja adopta 0 ~
+    n habita Oveja adopta 10 ~
+    i habita Oveja adopta 1 ~
+    suma habita Oveja adopta 0 ~
 ~~
 Nacimiento
     tiburon i presaclon n sangre

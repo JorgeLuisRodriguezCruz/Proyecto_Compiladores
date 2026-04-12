@@ -3,7 +3,7 @@
 Reino transformoMensaje ~
 
 Organismos
-    num <- habita Oveja adopta 2 ~
+    num habita Oveja adopta 2 ~
 ~~
 Nacimiento
     =^.^= Esta expresion debe dar 4

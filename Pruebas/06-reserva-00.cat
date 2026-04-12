@@ -2,11 +2,11 @@
 
 Reino PruebaConstantes ~
 Reserva
-    fosil Oveja LIMITE adopta 100 ~
-    fosil Oveja PI adopta 3 ~
+    LIMITE fosil 100 ~
+    PI fosil 3 ~
 ~~
 Organismos
-    valor <- habita Oveja ~
+    valor habita Oveja ~
 ~~
 Nacimiento
     valor adopta LIMITE pez PI ~

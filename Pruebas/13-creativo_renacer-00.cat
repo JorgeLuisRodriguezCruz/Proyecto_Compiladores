@@ -4,18 +4,19 @@
 Reino fenix ~
 
 Organismos
-    indice <- habita Oveja adopta 0 ~  
-    contador <- habita Oveja adopta 0 ~  
-    numeros <- habita Corral Oveja [4] adopta {[ 2, 3, 4, 6 ]} ~    =^.^= Arreglo de enteros
+    indice habita Oveja adopta 0 ~  
+    contador habita Oveja adopta 0 ~  
+    numeros habita Corral Oveja [4] adopta {[ 2, 3, 4, 6 ]} ~    =^.^= Arreglo de enteros
 ~~
 Nacimiento
     =^.^= Recorremos arreglo
     tiburon indice presaclon 4 sangre
     plancton
-        indice adopta Acariciar indice ~                   =^.^= Instruccion que incrementa en 1 al indice         
+        =^.^= Instruccion que incrementa en 1 al indice         
+        Acariciar indice ~
         cortejo numeros[indice] rat 2 clon 0
         atrae
-            contador adopta Acariciar contador ~ ~
+            Acariciar contador ~ ~
     delfin ~
     
     rugirSerpiente("El arreglo tiene esta cantidad de pares:") ~

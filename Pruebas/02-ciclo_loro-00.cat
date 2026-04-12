@@ -3,15 +3,17 @@
 Reino loroCiclon ~
 
 Organismos
-    contador <- habita Oveja adopta 0 ~
+    contador habita Oveja adopta 0 ~
 ~~
 Nacimiento 
     loro 
         plancton
-            contador adopta Acariciar contador ~        =^.^= Se incrementa en 1 el valor de la variable
+            =^.^= Se incrementa en 1 el valor de la variable
+            Acariciar contador ~
             rugirSerpiente("Estoy en el ciclo") ~
         delfin
-    mudo contador presa 50 ~                            =^.^= Equivalencia - until (contador < 50);
+    mudo contador presa 50 ~
+    =^.^= Equivalencia - until (contador < 50);
     rugirSerpiente("Por fin ya sali") ~ 
 
 Muerte loroCiclon ~~

@@ -2,14 +2,13 @@
 Reino VerificarEdad ~
 
 Organismos
-    edad <- habita Oveja ~
+    edad habita Oveja ~
 ~~
 Nacimiento
     rugirSerpiente("Edad: ") ~
     edad adopta olerOveja() ~
     cortejo edad hibrido 18
     atrae
-        rugirSerpiente("Es un especimen adulto") ~ ~
-    
+        rugirSerpiente("Es un especimen adulto") ~ ~    
 
 Muerte VerificarEdad ~~

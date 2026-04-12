@@ -1,6 +1,6 @@
 Reino Saludo ~
 
 Nacimiento
-    rugir Serpiente("Bienvenido al sistema Reino") ~ 
+    rugirSerpiente("Bienvenido al sistema Reino") ~ 
 
 Muerte Saludo ~~

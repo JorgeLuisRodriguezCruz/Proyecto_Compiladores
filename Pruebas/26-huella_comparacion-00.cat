@@ -2,7 +2,7 @@
 Reino CompararHuella ~
 
 Organismos
-    letra <- habita Huella adopta 'A' ~
+    letra habita Huella adopta 'A' ~
 ~~
 Nacimiento
     cortejo letra clon 'A'

@@ -2,9 +2,9 @@
 Reino SumaHormigas ~
 
 Organismos
-    a <- habita Oveja ~
-    b <- habita Oveja ~
-    resultado <- habita Oveja ~
+    a habita Oveja ~
+    b habita Oveja ~
+    resultado habita Oveja ~
 ~~
 Nacimiento
     rugirSerpiente("Ingrese primer numero: ") ~

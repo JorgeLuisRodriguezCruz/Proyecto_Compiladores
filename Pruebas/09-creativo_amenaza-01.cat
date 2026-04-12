@@ -3,7 +3,7 @@
 Reino depredando ~
 
 Organismos
-    resultado <- habita Gato ~
+    resultado habita Gato ~
 ~~ 
 Comportamientos
     =^.^= Esta funcion recibe un nuvel de peligro e indica si es peligroso devolviendo un valor Gato

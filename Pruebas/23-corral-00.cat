@@ -2,7 +2,7 @@
 Reino PruebaCorral ~
 
 Organismos
-    datos <- habita Corral Oveja [3] adopta {[ 10, 20, 30 ]} ~
+    datos habita Corral Oveja [3] adopta {[ 10, 20, 30 ]} ~
 ~~
 Nacimiento
     rugirOveja(datos[0]) ~

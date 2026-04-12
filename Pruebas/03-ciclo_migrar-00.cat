@@ -3,7 +3,7 @@
 Reino migrando ~
 
 Organismos
-	contador <- habita Oveja ~
+	contador habita Oveja ~
 ~~
 Nacimiento
 	=^.^= Se incrementa en 1 el valor de la variable con la instruccion Acariciar

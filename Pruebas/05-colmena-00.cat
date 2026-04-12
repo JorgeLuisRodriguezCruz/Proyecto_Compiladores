@@ -2,7 +2,7 @@
 Reino pruebaColmena ~
 
 Organismos
-    letras <- habita Colmena adopta { 'x' , 'y' , 'z' } ~
+    letras habita Colmena adopta { 'x' , 'y' , 'z' } ~
 ~~
 Nacimiento
     rugirColmena(letras) ~

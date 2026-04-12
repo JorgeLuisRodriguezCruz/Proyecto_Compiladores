@@ -2,7 +2,7 @@
 Reino PruebaRetorno ~
 
 Organismos
-    val <- habita Oveja ~
+    val habita Oveja ~
 ~~ 
 
 Comportamientos

@@ -3,14 +3,14 @@
 Reino pruebaAmenaza ~
 
 Organismos
-    bandera <- habita peligro adopta minimo ~ 
-    mensaje <- habita Serpiente adopta "No estoy en peligro." ~
+    bandera habita peligro adopta minimo ~ 
+    mensaje habita Serpiente adopta "No estoy en peligro." ~
 ~~
 Nacimiento
     =^.^= Cuando el nivel de peligro de la bandera aumente lo suficiente se sale del ciclo
     tiburon amenaza bandera clon vivo sangre
         plancton
-            bandera adopta acechar bandera ~         =^.^= Esta instruccion incrementa el nivel de peligro
+            acechar bandera ~         =^.^= Esta instruccion incrementa el nivel de peligro
             rugirSerpiente(mensaje) ~
         delfin ~
     mensaje adopta "Ahora estoy en peligro..." ~

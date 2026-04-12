@@ -15,7 +15,7 @@ Comportamientos
         delfin
     delfin
     
-    ritual principal(Serpiente respuesta, Oveja opcion)
+    ritual principal(Serpiente respuesta ~ Oveja opcion)
     plancton
         rugirSerpiente("Como te sientes?") ~
         rugirSerpiente("1. bien") ~
@@ -24,7 +24,7 @@ Comportamientos
 
         =^.^= Se hace la cohercion de la respuesta para tenerla en un entero
         respuesta adopta olerSerpiente() ~
-        opcion adopta Camaleon Oveja respuesta ~
+        opcion adopta respuesta Camaleon Oveja ~
 
         =^.^= En esta instruccion se pasa la opcion escogida a la funcion para obtener el peligro para estimar la amenaza
         cortejo amenaza obtener_peligro(opcion)

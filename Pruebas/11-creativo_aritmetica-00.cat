@@ -3,7 +3,7 @@
 Reino creativaAritmetica ~ 
 
 Organismos
-    numero <- habita Oveja adopta 2 ~  
+    numero habita Oveja adopta 2 ~  
 ~~ 
 Comportamientos
     entrenar elevar_cuadrado(Oveja num) Oveja

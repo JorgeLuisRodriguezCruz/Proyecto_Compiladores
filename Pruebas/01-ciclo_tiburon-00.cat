@@ -3,13 +3,15 @@
 Reino tiburonTornado ~
 
 Organismos
-    contador <- habita Oveja adopta 0 ~
+    contador habita Oveja adopta 0 ~
 ~~
 Nacimiento 
 
-    tiburon contador presa 50 sangre                    =^.^= Equivalencia - While (contador < 50) do
+    =^.^= Equivalencia - While (contador < 50) do
+    tiburon contador presa 50 sangre       
         plancton
-            contador adopta Acariciar contador ~        =^.^= Se incrementa en 1 el valor de la variable
+            =^.^= Se incrementa en 1 el valor de la variable
+            Acariciar contador ~
             rugirSerpiente("Estoy en el ciclo") ~
         delfin ~ 
     rugirSerpiente("Por fin ya sali") ~    

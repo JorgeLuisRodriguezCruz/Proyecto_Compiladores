@@ -3,9 +3,9 @@
 Reino AreaRectangulo ~
 
 Organismos
-    base <- habita Oveja adopta 10 ~
-    altura <- habita Oveja adopta 5 ~
-    area <- habita Oveja ~
+    base habita Oveja adopta 10 ~
+    altura habita Oveja adopta 5 ~
+    area habita Oveja ~
 ~~
 Nacimiento
     area adopta base cuy altura ~

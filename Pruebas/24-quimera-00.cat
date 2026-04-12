@@ -2,14 +2,14 @@
 Reino RegistroEspecie ~
 
 Especies
-    animal => Quimera 
+    animal cripsis Quimera 
     plancton
-        id <- habita Oveja ~
-        tipo <- habita Serpiente ~
+        id habita Oveja ~
+        tipo habita Serpiente ~
     delfin ~
 ~~
 Organismos
-    sujeto <- habita animal ~
+    sujeto habita animal ~
 ~~
 Nacimiento
     sujeto@id adopta 505 ~

@@ -2,7 +2,7 @@
 Reino PruebaAtraeRepele ~
 
 Organismos
-      clima <- habita Oveja ~
+      clima habita Oveja ~
 ~~
 Nacimiento
 	rugirSerpiente("Temperatura: ") ~
