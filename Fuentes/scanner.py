@@ -1,3 +1,20 @@
+""" 
+Scanner PasCat - Analizador Léxico para el Lenguaje de Programación PasCat
+Autores: 
+- Jorge Luis Rodríguez Cruz - 2020010773
+- Franco Vinicio Rojas Lagos - 2022437823
+Descripción: Este módulo implementa el analizador léxico para el lenguaje de programación PasCat.
+Funcionalidades:
+- Tokenización de código fuente PasCat, identificando palabras reservadas, identificadores, literales y símbolos.
+- Manejo de comentarios de línea y bloque, con conteo estadístico.
+- Generación de un "Muro de Ladrillos" en HTML que visualiza los tokens encontrados, con colores según su familia.
+- Estadísticas detalladas de la compilación, incluyendo conteo de caracteres, líneas, comentarios y errores léxicos.
+Uso: Ejecutar el script pasando el archivo fuente PasCat como argumento
+Ejemplo: python scanner.py ejemplo.cat
+Salida: Archivo 'muro.html' con la visualización del
+tokens y las estadísticas de compilación.
+"""
+
 import sys
 import html
 
