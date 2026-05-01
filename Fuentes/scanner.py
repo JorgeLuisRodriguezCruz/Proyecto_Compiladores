@@ -37,14 +37,22 @@ TOKENS = {
     # Familia 3: Tipos de Datos y Declaradores
     'OVEJA': 200, 'HUELLA': 201, 'SERPIENTE': 202, 'GATO': 203,
     'COLMENA': 204, 'PALOMA': 205, 'MEDUSA': 206, 'CORRAL': 207, 'CREATIVO': 208, 'QUIMERA': 209,
-    'FOSIL': 220, 'CRIPSIS': 221, 'HABITA': 222, 'ADOPTA': 223,
+    'FOSIL': 220, 'CRIPSIS': 221, 'HABITA': 222, 'ADOPTA': 223, 'PELIGRO': 224,
     
     # Familia 4: Operadores Especiales y Biológicos
     'CAMALEON': 400, 'BALLENA': 401, 'MACHETEAR': 410, 'TROZO': 411, 'ACECHAR': 412,
     'ABEJA': 420, 'AGUIJON': 421, 'ENJAMBRE': 422, 'MIEL': 423, 'FAMILIA': 424,
     'PRESA': 430, 'DEPREDADOR': 431, 'PEZ': 432, 'ESCAMAS': 433, 'ENROSCAR': 434, 
     'MUDAR': 435, 'PIEL': 436, 'CLON': 437, 'ACARICIAR': 438,
-    'AMARRAR': 440, 'LIGO': 441, 'ALETEAR': 442, 'NIDO': 443,
+    'AMARRAR': 440, 'LIGO': 441, 'ALETEAR': 442, 'NIDO': 443, 
+    'OSO': 444, 'CUY': 445, 'AVE': 446, 'RAT': 447, 'VACA': 448, 'PEZLEON': 449, 
+    'CONEJO': 450, 'MONO': 451, 'SIM': 452, 'MUT': 453, 'DEP': 454, 'COM': 455,
+    'HIBRIDO': 456, 'PRESACLON': 457, 'DEPREDADORCLON': 458, 'ATERRIZAR': 459, 
+    'PLUMA': 460, 'CAPTURAR': 461, 'REPRENDER': 462, 'RENACER': 463, 'TRANSFORMAR': 464, 
+    'AMENAZA': 465, 'BAJO': 466, 'MEDIO': 467, 'ALTO': 468, 'MINIMO': 469, 'MAXIMO': 470,
+    
+    # Familia 5: Funciones Intrínsecas
+    'ESCONEJO?': 520, 'ESLOBO?': 521, 'DESOLADO?': 522, 'SALVAJE': 523, 'DOCIL': 524,
     
     # Símbolos, Asignaciones y Referencias
     'SEP_SECCION': 300, # ~~
@@ -57,14 +65,15 @@ TOKENS = {
     'PAR_CIERRA': 311, # )
     'COR_ABRE': 312, # [
     'COR_CIERRA': 313, # ]
-    'LLAVE_ABRE': 320, # {
-    'LLAVE_CIERRA': 321, # }
     'COMA': 314, # ,
     'ACCESO_REG': 315, # @
     'MENOR_QUE': 316, # <
     'MAYOR_QUE': 317, # >
     'SUMA': 318, # +
     'MULTIPLICACION': 319, # *
+    'LLAVE_ABRE': 320, # {
+    'LLAVE_CIERRA': 321, # }
+    'DESP_DER': 322, # >>
     
     # Comentarios y Errores
     'COM_LINEA': 900,
@@ -90,14 +99,24 @@ PALABRAS_RESERVADAS = {
     'gato': TOKENS['GATO'], 'colmena': TOKENS['COLMENA'], 'paloma': TOKENS['PALOMA'],
     'medusa': TOKENS['MEDUSA'], 'corral': TOKENS['CORRAL'], 'creativo': TOKENS['CREATIVO'], 
     'quimera': TOKENS['QUIMERA'], 'fosil': TOKENS['FOSIL'], 'cripsis': TOKENS['CRIPSIS'], 
-    'habita': TOKENS['HABITA'], 'adopta': TOKENS['ADOPTA'],
+    'habita': TOKENS['HABITA'], 'adopta': TOKENS['ADOPTA'], 'peligro': TOKENS['PELIGRO'],
     'camaleon': TOKENS['CAMALEON'], 'ballena': TOKENS['BALLENA'], 'machetear': TOKENS['MACHETEAR'], 
     'trozo': TOKENS['TROZO'], 'acechar': TOKENS['ACECHAR'], 'abeja': TOKENS['ABEJA'], 
     'aguijon': TOKENS['AGUIJON'], 'enjambre': TOKENS['ENJAMBRE'], 'miel': TOKENS['MIEL'], 
     'familia': TOKENS['FAMILIA'], 'presa': TOKENS['PRESA'], 'depredador': TOKENS['DEPREDADOR'], 
     'pez': TOKENS['PEZ'], 'escamas': TOKENS['ESCAMAS'], 'enroscar': TOKENS['ENROSCAR'], 
     'mudar': TOKENS['MUDAR'], 'piel': TOKENS['PIEL'], 'clon': TOKENS['CLON'], 'acariciar': TOKENS['ACARICIAR'],
-    'amarrar': TOKENS['AMARRAR'], 'ligo': TOKENS['LIGO'], 'aletear': TOKENS['ALETEAR'], 'nido': TOKENS['NIDO']
+    'amarrar': TOKENS['AMARRAR'], 'ligo': TOKENS['LIGO'], 'aletear': TOKENS['ALETEAR'], 'nido': TOKENS['NIDO'],
+    'oso': TOKENS['OSO'], 'cuy': TOKENS['CUY'], 'ave': TOKENS['AVE'], 'rat': TOKENS['RAT'], 
+    'vaca': TOKENS['VACA'], 'pezleon': TOKENS['PEZLEON'], 'conejo': TOKENS['CONEJO'], 'mono': TOKENS['MONO'], 
+    'sim': TOKENS['SIM'], 'mut': TOKENS['MUT'], 'dep': TOKENS['DEP'], 'com': TOKENS['COM'],
+    'hibrido': TOKENS['HIBRIDO'], 'presaclon': TOKENS['PRESACLON'], 'depredadorclon': TOKENS['DEPREDADORCLON'], 
+    'aterrizar': TOKENS['ATERRIZAR'], 'pluma': TOKENS['PLUMA'], 'capturar': TOKENS['CAPTURAR'], 
+    'reprender': TOKENS['REPRENDER'], 'renacer': TOKENS['RENACER'], 'transformar': TOKENS['TRANSFORMAR'], 
+    'amenaza': TOKENS['AMENAZA'], 'bajo': TOKENS['BAJO'], 'medio': TOKENS['MEDIO'], 'alto': TOKENS['ALTO'], 
+    'minimo': TOKENS['MINIMO'], 'maximo': TOKENS['MAXIMO'],
+    'esconejo?': TOKENS['ESCONEJO?'], 'eslobo?': TOKENS['ESLOBO?'], 'desolado?': TOKENS['DESOLADO?'], 
+    'salvaje': TOKENS['SALVAJE'], 'docil': TOKENS['DOCIL']
 }
 
 class Token:
@@ -300,11 +319,16 @@ class ScannerPasCat:
 
         if actual == '>':
             vistazo = self.codigo[self.pos:self.pos+3]
-            # Validamos si es paso por referencia
+            # Validamos si es paso por referencia (><>)
             if vistazo == "><>":
                 self.pos += 3
                 self.columna += 3
                 t = Token(TOKENS['REF_PARAM'], "><>", self.linea, col_inicio)
+            # Validamos si es doble mayor que (>>)
+            elif vistazo[:2] == ">>":
+                self.pos += 2
+                self.columna += 2
+                t = Token(TOKENS['DESP_DER'], ">>", self.linea, col_inicio)
             else:
                 self.avanzar()
                 t = Token(TOKENS['MAYOR_QUE'], ">", self.linea, col_inicio)
