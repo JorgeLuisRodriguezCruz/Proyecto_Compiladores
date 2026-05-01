@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Muro de Ladrillos - PasCat</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 20px; }
+        .contenedor-muro { 
+            display: flex; flex-direction: column; gap: 6px; margin-bottom: 30px; 
+            background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .linea-muro { 
+            display: flex; flex-wrap: wrap; gap: 5px; align-items: center; min-height: 32px; 
+        }
+        .num-linea { 
+            width: 40px; color: #adb5bd; font-family: monospace; text-align: right; 
+            margin-right: 15px; user-select: none; font-size: 14px; border-right: 2px solid #e9ecef; padding-right: 10px;
+        }
+        .ladrillo {
+            padding: 6px 12px; border-radius: 4px; color: white;
+            font-weight: bold; box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            font-family: monospace; border: 1px solid rgba(0,0,0,0.1);
+            font-size: 14px; white-space: pre-wrap;
+        }
+        .stats { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .lista-familias { list-style-type: none; padding-left: 0; } /* Quita los puntos de la lista */
+        h1, h2, h3 { color: #343a40; }
+    </style>
+</head>
+<body>
+    <h1>Muro de Ladrillos Léxico</h1>
+    <div class="contenedor-muro">
+        <div class="linea-muro"><div class="num-linea">1</div>
+            <div class="ladrillo" style="background-color: #e2e3e5; color: #6c757d;" title="Línea 1, Col 1 (ID: 900)">=^.^= Programa de prueba de arreglos (Corral)</div>
+        </div>
+        <div class="linea-muro"><div class="num-linea">2</div>
+            <div class="ladrillo" style="background-color: #007bff;" title="Línea 2, Col 1 (ID: 100)">Reino</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 2, Col 7 (ID: 10)">PruebaCorral</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 2, Col 20 (ID: 301)">~</div>
+        </div>
+        <div class="linea-muro"><div class="num-linea">3</div>
+        </div>
+        <div class="linea-muro"><div class="num-linea">4</div>
+            <div class="ladrillo" style="background-color: #007bff;" title="Línea 4, Col 1 (ID: 104)">Organismos</div>
+        </div>
+        <div class="linea-muro"><div class="num-linea">5</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 5, Col 5 (ID: 10)">datos</div>
+            <div class="ladrillo" style="background-color: #6f42c1;" title="Línea 5, Col 11 (ID: 222)">habita</div>
+            <div class="ladrillo" style="background-color: #6f42c1;" title="Línea 5, Col 18 (ID: 207)">Corral</div>
+            <div class="ladrillo" style="background-color: #6f42c1;" title="Línea 5, Col 25 (ID: 200)">Oveja</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 5, Col 31 (ID: 312)">[</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 5, Col 32 (ID: 20)">3</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 5, Col 33 (ID: 313)">]</div>
+            <div class="ladrillo" style="background-color: #6f42c1;" title="Línea 5, Col 35 (ID: 223)">adopta</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 5, Col 42 (ID: 320)">{</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 5, Col 43 (ID: 312)">[</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 5, Col 45 (ID: 20)">10</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 5, Col 47 (ID: 314)">,</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 5, Col 49 (ID: 20)">20</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 5, Col 51 (ID: 314)">,</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 5, Col 53 (ID: 20)">30</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 5, Col 56 (ID: 313)">]</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 5, Col 57 (ID: 321)">}</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 5, Col 59 (ID: 301)">~</div>
+        </div>
+        <div class="linea-muro"><div class="num-linea">6</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 6, Col 1 (ID: 300)">~~</div>
+        </div>
+        <div class="linea-muro"><div class="num-linea">7</div>
+            <div class="ladrillo" style="background-color: #007bff;" title="Línea 7, Col 1 (ID: 109)">Nacimiento</div>
+        </div>
+        <div class="linea-muro"><div class="num-linea">8</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 8, Col 5 (ID: 10)">rugirOveja</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 8, Col 15 (ID: 310)">(</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 8, Col 16 (ID: 10)">datos</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 8, Col 21 (ID: 312)">[</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 8, Col 22 (ID: 20)">0</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 8, Col 23 (ID: 313)">]</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 8, Col 24 (ID: 311)">)</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 8, Col 26 (ID: 301)">~</div>
+        </div>
+        <div class="linea-muro"><div class="num-linea">9</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 9, Col 5 (ID: 10)">rugirOveja</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 9, Col 15 (ID: 310)">(</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 9, Col 16 (ID: 10)">datos</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 9, Col 21 (ID: 312)">[</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 9, Col 22 (ID: 20)">1</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 9, Col 23 (ID: 313)">]</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 9, Col 24 (ID: 311)">)</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 9, Col 26 (ID: 301)">~</div>
+        </div>
+        <div class="linea-muro"><div class="num-linea">10</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 10, Col 5 (ID: 10)">rugirOveja</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 10, Col 15 (ID: 310)">(</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 10, Col 16 (ID: 10)">datos</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 10, Col 21 (ID: 312)">[</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 10, Col 22 (ID: 20)">2</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 10, Col 23 (ID: 313)">]</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 10, Col 24 (ID: 311)">)</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 10, Col 26 (ID: 301)">~</div>
+        </div>
+        <div class="linea-muro"><div class="num-linea">11</div>
+        </div>
+        <div class="linea-muro"><div class="num-linea">12</div>
+            <div class="ladrillo" style="background-color: #007bff;" title="Línea 12, Col 1 (ID: 101)">Muerte</div>
+            <div class="ladrillo" style="background-color: #28a745;" title="Línea 12, Col 8 (ID: 10)">PruebaCorral</div>
+            <div class="ladrillo" style="background-color: #343a40;" title="Línea 12, Col 21 (ID: 300)">~~</div>
+        </div>
+    </div>
+    <div class="stats">
+        <h2>Estadísticas de Compilación</h2>
+        <ul>
+<li style='margin-bottom: 5px;'><strong>Caracteres leídos:</strong> 258</li>
+<li style='margin-bottom: 5px;'><strong>Líneas procesadas:</strong> 12</li>
+<li style='margin-bottom: 5px;'><strong>Comentarios de línea:</strong> 1</li>
+        </ul>
+        <h3>Familias Encontradas:</h3>
+        <ul class="lista-familias">
+            <li style="margin-bottom: 8px; display: flex; align-items: center;">
+                <span style="display: inline-block; width: 16px; height: 16px; background-color: #007bff; margin-right: 10px; border-radius: 4px; box-shadow: 1px 1px 2px rgba(0,0,0,0.2);"></span>
+                <strong>Fam 2: Estructura y Control:</strong> &nbsp;4 tokens
+            </li>
+            <li style="margin-bottom: 8px; display: flex; align-items: center;">
+                <span style="display: inline-block; width: 16px; height: 16px; background-color: #28a745; margin-right: 10px; border-radius: 4px; box-shadow: 1px 1px 2px rgba(0,0,0,0.2);"></span>
+                <strong>Fam 1: Identificadores y Literales:</strong> &nbsp;16 tokens
+            </li>
+            <li style="margin-bottom: 8px; display: flex; align-items: center;">
+                <span style="display: inline-block; width: 16px; height: 16px; background-color: #343a40; margin-right: 10px; border-radius: 4px; box-shadow: 1px 1px 2px rgba(0,0,0,0.2);"></span>
+                <strong>Fam 6: Símbolos y Delimitadores:</strong> &nbsp;27 tokens
+            </li>
+            <li style="margin-bottom: 8px; display: flex; align-items: center;">
+                <span style="display: inline-block; width: 16px; height: 16px; background-color: #6f42c1; margin-right: 10px; border-radius: 4px; box-shadow: 1px 1px 2px rgba(0,0,0,0.2);"></span>
+                <strong>Fam 3: Tipos de Datos:</strong> &nbsp;4 tokens
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
