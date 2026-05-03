@@ -186,9 +186,6 @@ ImprimirSalto proc near
     ret
 ImprimirSalto endp
 
-; =========================================================================
-; PROGRAMA PRINCIPAL (TOUR)
-; =========================================================================
 Principal proc far
     push ds
     xor ax, ax

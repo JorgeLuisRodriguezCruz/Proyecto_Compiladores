@@ -1,5 +1,4 @@
 ; =========================================================================
-; Subject: Parser de PasCat
 ; Archivo: Oveja.asm (Operaciones para Enteros)
 ; Autores:
 ; Jorge Luis Rodríguez Cruz - 2020010773

@@ -6,7 +6,6 @@
 ; Descripción: Definición de operaciones lógicas 
 ;              para el tipo Gato (Booleano: vivo=1, muerto=0). Demuestra 
 ;              AND (sim), OR (mut), XOR (com) y NOT (dep).
-;              Parametros pasados estrictamente por la pila.
 ; =========================================================================
 
 pila segment stack 'STACK'

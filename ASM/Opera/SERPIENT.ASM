@@ -1,11 +1,11 @@
 ; =========================================================================
-; Subject: Parser de PasCat
-; Archivo: Serpiente.asm (Operaciones para Strings V1.3)
-; Autores: Jorge Luis Rodríguez Cruz - Franco Vinicio Rojas Lagos
+; Archivo: Serpiente.asm (Operaciones para Strings)
+; Autores:
+; Jorge Luis Rodríguez Cruz - 2020010773
+; Franco Vinicio Rojas Lagos - 2022437823
 ; Descripción: Bitácora de operaciones del tipo Serpiente (Strings). 
 ;              Demuestra funciones de largo (escamas), busqueda (acechar) 
 ;              y concatenacion (enroscar).
-;              Parámetros manejados por REFERENCIA (punteros) en la pila.
 ; =========================================================================
 
 pila segment stack 'STACK'
@@ -29,9 +29,6 @@ datos segment
     msg_fin     DB 10, 13, "Tour finalizado con exito.", 10, 13, "$"
 datos ends
 
-; -------------------------------------------------------------------------
-; SEGMENTO DE CÓDIGO
-; -------------------------------------------------------------------------
 codigo segment
     assume cs:codigo, ds:datos, ss:pila
 
@@ -192,9 +189,6 @@ ImprimirSalto proc near
     ret
 ImprimirSalto endp
 
-; =========================================================================
-; PROGRAMA PRINCIPAL (TOUR)
-; =========================================================================
 Principal proc far
     push ds
     xor ax, ax
