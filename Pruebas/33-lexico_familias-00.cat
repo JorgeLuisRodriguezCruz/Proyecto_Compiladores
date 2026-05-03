@@ -1,0 +1,31 @@
+=^.^= Prueba 1: Todas las familias lexicas validas
+Reino PruebaFamilias ~
+Reserva
+    MAX fosil 100 ~
+Especies
+    tipo1 cripsis Oveja ~
+Organismos
+    var1 habita Oveja adopta 10 ~
+    var2 habita Serpiente adopta "Hola PasCat" ~
+    var3 habita Huella adopta 'X' ~
+    var4 habita Gato adopta vivo ~
+Nacimiento
+    =^.^= Familia de operadores aritmeticos (Oveja)
+    var1 adopta var1 boa 5 ~
+    var1 adopta var1 can 2 ~
+    var1 adopta var1 emu 3 ~
+    var1 adopta var1 gnu 2 ~
+    var1 adopta var1 yak 1 ~
+    
+    =^.^= Familia de operadores logicos (Gato)
+    var4 adopta vivo sim muerto ~
+    var4 adopta vivo mut muerto ~
+    var4 adopta dep var4 ~
+    var4 adopta vivo com vivo ~
+    
+    =^.^= Funciones con ? y referencias
+    var4 adopta esconejo?('7') ~
+    entrenar mifunc(Oveja a ~ Oveja ><> b) Oveja ~
+    
+    rugirOveja(var1) ~
+Muerte PruebaFamilias ~~

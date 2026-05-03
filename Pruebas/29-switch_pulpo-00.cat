@@ -1,0 +1,17 @@
+=^.^= Prueba de la instruccion pulpo (switch) con su default (cabeza)
+Reino PruebaPulpo ~
+Organismos
+    opcion habita Oveja adopta 2 ~
+Nacimiento
+    pulpo opcion
+    plancton
+        tentaculo 1 :
+            rugirSerpiente("Opcion 1 elegida") ~
+            liebre ~ =^.^= Break
+        tentaculo 2 :
+            rugirSerpiente("Opcion 2 elegida") ~
+            liebre ~
+        cabeza :
+            rugirSerpiente("Opcion por defecto") ~
+    delfin ~
+Muerte PruebaPulpo ~~

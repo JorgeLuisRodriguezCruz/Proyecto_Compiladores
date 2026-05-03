@@ -1,0 +1,19 @@
+=^.^= Prueba 3: ERRORES LEXICOS. El escaner debe atraparlos y recuperarse.
+Reino PruebaErrores ~
+Organismos
+    num habita Oveja adopta 10 ~
+Nacimiento
+    =^.^= Error 1: Simbolo no reconocido en PasCat V1.3 (#)
+    num adopta num # 5 ~
+    
+    =^.^= Error 2: String sin cerrar (el salto de linea lo rompe)
+    texto habita Serpiente adopta "Este string no se cierra
+    
+    =^.^= Error 3: Char sin cerrar
+    letra habita Huella adopta 'A
+    
+    =^.^= Error 4: Otro simbolo invalido y letras pegadas a simbolos raros
+    num adopta num ! 2 ~
+    var_invalida& adopta 4 ~
+    
+Muerte PruebaErrores ~~

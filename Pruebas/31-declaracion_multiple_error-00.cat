@@ -1,0 +1,15 @@
+=^.^= Prueba de declaracion multiple
+Reino DeclaracionMultiple ~
+Organismos
+    =^.^= Declaracion multiple en una sola linea
+    x, y, z habita Oveja ~
+    
+    =^.^= Los flotantes usan animales marinos
+    promedio habita Medusa adopta 9.5 ~
+Nacimiento
+    x adopta 10 ~
+    y adopta 20 ~
+    z adopta x boa y ~
+    
+    rugirOveja(z) ~
+Muerte DeclaracionMultiple ~~

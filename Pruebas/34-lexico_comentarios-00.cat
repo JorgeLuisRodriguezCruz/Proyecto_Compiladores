@@ -1,0 +1,18 @@
+=^.^= Prueba 2: Escaneo de comentarios y cadenas
+=^.^> 
+    Este es un comentario de bloque.
+    Puede tener varias lineas y el escaner debe ignorarlo o tokenizarlo bien.
+    Incluso si tiene simbolos raros adentro: @ # $ % & * !
+    O palabras reservadas: Reino Muerte adopta
+<^.^=
+Reino PruebaTextos ~
+Organismos
+    texto1 habita Serpiente adopta "" ~ =^.^= String vacio
+    letra habita Huella adopta ' ' ~ =^.^= Char con espacio en blanco
+Nacimiento
+    =^.^= String con numeros y simbolos validos
+    texto1 adopta "String con espacios, 12345 y $imbolos!" ~
+    
+    =^.^= Prueba de llaves compuestas
+    datos habita Corral Oveja [2] adopta {[ 10, 20 ]} ~
+Muerte PruebaTextos ~~

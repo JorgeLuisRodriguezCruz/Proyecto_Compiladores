@@ -1,0 +1,17 @@
+=^.^= Prueba de las operaciones de strings (Serpiente)
+Reino PruebaStrings ~
+Organismos
+    texto1 habita Serpiente adopta "Hola" ~
+    texto2 habita Serpiente adopta " PasCat" ~
+    resultado habita Serpiente ~
+    longitud habita Oveja ~
+Nacimiento
+    =^.^= Prueba de concatenacion
+    resultado adopta texto1 enroscar texto2 ~
+    
+    =^.^= Prueba de largo
+    longitud adopta escamas resultado ~
+    
+    rugirSerpiente(resultado) ~
+    rugirOveja(longitud) ~
+Muerte PruebaStrings ~~
