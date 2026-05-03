@@ -19,7 +19,7 @@ import sys
 import html
 
 # ==========================================
-# DICCIONARIO DE TOKENS Y FAMILIAS
+# DICCIONARIO DE TOKENS Y FAMILIAS (V1.3)
 # ==========================================
 TOKENS = {
     'ID': 10, 'LIT_OVEJA': 20, 'LIT_HUELLA': 21, 'LIT_SERPIENTE': 22, 'LIT_GATO': 23,
@@ -29,30 +29,38 @@ TOKENS = {
     'ORGANISMOS': 104, 'HUEVOS': 105, 'PROCESOS': 106, 'COMPORTAMIENTOS': 107, 
     'ENTRADA': 108, 'NACIMIENTO': 109,
     'PLANCTON': 110, 'DELFIN': 111, 'PULPO': 112, 'CABEZA': 113, 'TENTACULO': 114,
-    'TORTUGA': 115, 'DODO': 116, 'PERRO': 117,
+    'TORTUGA': 115, 'DODO': 116, 'PERRO': 117, 'LIEBRE': 118,
     'TIBURON': 120, 'SANGRE': 121, 'CORTEJO': 122, 'ATRAE': 123, 'REPELE': 124,
     'LORO': 125, 'MUDO': 126, 'MIGRAR': 127, 'DESDE': 128, 'HASTA': 129, 'PASO': 130, 'RUTA': 131,
     'ENTRENAR': 132, 'RITUAL': 133, 'CANGURO': 134, 'BOLSA': 135, 'INSTRUCCION': 136,
     
     # Familia 3: Tipos de Datos y Declaradores
     'OVEJA': 200, 'HUELLA': 201, 'SERPIENTE': 202, 'GATO': 203,
-    'COLMENA': 204, 'PALOMA': 205, 'MEDUSA': 206, 'CORRAL': 207, 'CREATIVO': 208, 'QUIMERA': 209,
+    'COLMENA': 204, 'PALOMA': 205, 'MEDUSA': 206, 'CORRAL': 207, 'QUEBRANTAHUESOS': 208, 'QUIMERA': 209,
     'FOSIL': 220, 'CRIPSIS': 221, 'HABITA': 222, 'ADOPTA': 223, 'PELIGRO': 224,
     
     # Familia 4: Operadores Especiales y Biológicos
     'CAMALEON': 400, 'BALLENA': 401, 'MACHETEAR': 410, 'TROZO': 411, 'ACECHAR': 412,
     'ABEJA': 420, 'AGUIJON': 421, 'ENJAMBRE': 422, 'MIEL': 423, 'FAMILIA': 424,
-    'PRESA': 430, 'DEPREDADOR': 431, 'PEZ': 432, 'ESCAMAS': 433, 'ENROSCAR': 434, 
+    'PRESA': 430, 'DEPREDADOR': 431, 'ESCAMAS': 433, 'ENROSCAR': 434, 
     'MUDAR': 435, 'PIEL': 436, 'CLON': 437, 'ACARICIAR': 438,
     'AMARRAR': 440, 'LIGO': 441, 'ALETEAR': 442, 'NIDO': 443, 
-    'OSO': 444, 'CUY': 445, 'AVE': 446, 'RAT': 447, 'VACA': 448, 'PEZLEON': 449, 
-    'CONEJO': 450, 'MONO': 451, 'SIM': 452, 'MUT': 453, 'DEP': 454, 'COM': 455,
-    'HIBRIDO': 456, 'PRESACLON': 457, 'DEPREDADORCLON': 458, 'ATERRIZAR': 459, 
-    'PLUMA': 460, 'CAPTURAR': 461, 'REPRENDER': 462, 'RENACER': 463, 'TRANSFORMAR': 464, 
-    'AMENAZA': 465, 'BAJO': 466, 'MEDIO': 467, 'ALTO': 468, 'MINIMO': 469, 'MAXIMO': 470,
     
-    # Familia 5: Funciones Intrínsecas
+    # Operadores Aritméticos V1.3
+    'BOA': 444, 'CAN': 445, 'EMU': 446, 'GNU': 447, 'YAK': 448, # Enteros
+    'FOCA': 449, 'MERO': 450, 'ORCA': 451, 'RAYA': 452,         # Flotantes
+    
+    'SIM': 453, 'MUT': 454, 'DEP': 455, 'COM': 456,
+    'HIBRIDO': 457, 'PRESACLON': 458, 'DEPREDADORCLON': 459, 'ATERRIZAR': 460, 
+    'PLUMA': 461, 'CAPTURAR': 462, 'REPRENDER': 463, 'RENACER': 464, 'TRANSFORMAR': 465, 
+    
+    # Operadores Creativos
+    'CONEJO': 470, 'OSO_COME': 471, 'PANDA_COME': 472,
+    
+    # Familia 5: Funciones Intrínsecas (E/S y Utilitarias)
     'ESCONEJO?': 520, 'ESLOBO?': 521, 'DESOLADO?': 522, 'SALVAJE': 523, 'DOCIL': 524,
+    'RUGIROVEJA': 530, 'RUGIRHUELLA': 531, 'RUGIRSERPIENTE': 532, 'RUGIRGATO': 533,
+    'OLEROVEJA': 540, 'OLERHUELLA': 541, 'OLERSERPIENTE': 542, 'OLERGATO': 543,
     
     # Símbolos, Asignaciones y Referencias
     'SEP_SECCION': 300, # ~~
@@ -74,6 +82,7 @@ TOKENS = {
     'LLAVE_ABRE': 320, # {
     'LLAVE_CIERRA': 321, # }
     'DESP_DER': 322, # >>
+    'DOLAR': 323, # $
     
     # Comentarios y Errores
     'COM_LINEA': 900,
@@ -89,34 +98,43 @@ PALABRAS_RESERVADAS = {
     'entrada': TOKENS['ENTRADA'], 'nacimiento': TOKENS['NACIMIENTO'],
     'plancton': TOKENS['PLANCTON'], 'delfin': TOKENS['DELFIN'], 'pulpo': TOKENS['PULPO'], 
     'cabeza': TOKENS['CABEZA'], 'tentaculo': TOKENS['TENTACULO'], 'tortuga': TOKENS['TORTUGA'], 
-    'dodo': TOKENS['DODO'], 'perro': TOKENS['PERRO'], 'tiburon': TOKENS['TIBURON'], 
-    'sangre': TOKENS['SANGRE'], 'cortejo': TOKENS['CORTEJO'], 'atrae': TOKENS['ATRAE'], 
-    'repele': TOKENS['REPELE'], 'loro': TOKENS['LORO'], 'mudo': TOKENS['MUDO'], 'migrar': TOKENS['MIGRAR'],
-    'desde': TOKENS['DESDE'], 'hasta': TOKENS['HASTA'], 'paso': TOKENS['PASO'], 'ruta': TOKENS['RUTA'],
-    'entrenar': TOKENS['ENTRENAR'], 'ritual': TOKENS['RITUAL'], 'canguro': TOKENS['CANGURO'], 
-    'bolsa': TOKENS['BOLSA'], 'instruccion': TOKENS['INSTRUCCION'],
+    'dodo': TOKENS['DODO'], 'perro': TOKENS['PERRO'], 'liebre': TOKENS['LIEBRE'],
+    'tiburon': TOKENS['TIBURON'], 'sangre': TOKENS['SANGRE'], 'cortejo': TOKENS['CORTEJO'], 
+    'atrae': TOKENS['ATRAE'], 'repele': TOKENS['REPELE'], 'loro': TOKENS['LORO'], 'mudo': TOKENS['MUDO'], 
+    'migrar': TOKENS['MIGRAR'], 'desde': TOKENS['DESDE'], 'hasta': TOKENS['HASTA'], 'paso': TOKENS['PASO'], 
+    'ruta': TOKENS['RUTA'], 'entrenar': TOKENS['ENTRENAR'], 'ritual': TOKENS['RITUAL'], 
+    'canguro': TOKENS['CANGURO'], 'bolsa': TOKENS['BOLSA'], 'instruccion': TOKENS['INSTRUCCION'],
+    
     'oveja': TOKENS['OVEJA'], 'huella': TOKENS['HUELLA'], 'serpiente': TOKENS['SERPIENTE'], 
     'gato': TOKENS['GATO'], 'colmena': TOKENS['COLMENA'], 'paloma': TOKENS['PALOMA'],
-    'medusa': TOKENS['MEDUSA'], 'corral': TOKENS['CORRAL'], 'creativo': TOKENS['CREATIVO'], 
+    'medusa': TOKENS['MEDUSA'], 'corral': TOKENS['CORRAL'], 'quebrantahuesos': TOKENS['QUEBRANTAHUESOS'], 
     'quimera': TOKENS['QUIMERA'], 'fosil': TOKENS['FOSIL'], 'cripsis': TOKENS['CRIPSIS'], 
     'habita': TOKENS['HABITA'], 'adopta': TOKENS['ADOPTA'], 'peligro': TOKENS['PELIGRO'],
+    
     'camaleon': TOKENS['CAMALEON'], 'ballena': TOKENS['BALLENA'], 'machetear': TOKENS['MACHETEAR'], 
     'trozo': TOKENS['TROZO'], 'acechar': TOKENS['ACECHAR'], 'abeja': TOKENS['ABEJA'], 
     'aguijon': TOKENS['AGUIJON'], 'enjambre': TOKENS['ENJAMBRE'], 'miel': TOKENS['MIEL'], 
     'familia': TOKENS['FAMILIA'], 'presa': TOKENS['PRESA'], 'depredador': TOKENS['DEPREDADOR'], 
-    'pez': TOKENS['PEZ'], 'escamas': TOKENS['ESCAMAS'], 'enroscar': TOKENS['ENROSCAR'], 
+    'escamas': TOKENS['ESCAMAS'], 'enroscar': TOKENS['ENROSCAR'], 
     'mudar': TOKENS['MUDAR'], 'piel': TOKENS['PIEL'], 'clon': TOKENS['CLON'], 'acariciar': TOKENS['ACARICIAR'],
     'amarrar': TOKENS['AMARRAR'], 'ligo': TOKENS['LIGO'], 'aletear': TOKENS['ALETEAR'], 'nido': TOKENS['NIDO'],
-    'oso': TOKENS['OSO'], 'cuy': TOKENS['CUY'], 'ave': TOKENS['AVE'], 'rat': TOKENS['RAT'], 
-    'vaca': TOKENS['VACA'], 'pezleon': TOKENS['PEZLEON'], 'conejo': TOKENS['CONEJO'], 'mono': TOKENS['MONO'], 
+    
+    'boa': TOKENS['BOA'], 'can': TOKENS['CAN'], 'emu': TOKENS['EMU'], 'gnu': TOKENS['GNU'], 'yak': TOKENS['YAK'],
+    'foca': TOKENS['FOCA'], 'mero': TOKENS['MERO'], 'orca': TOKENS['ORCA'], 'raya': TOKENS['RAYA'],
+    
     'sim': TOKENS['SIM'], 'mut': TOKENS['MUT'], 'dep': TOKENS['DEP'], 'com': TOKENS['COM'],
     'hibrido': TOKENS['HIBRIDO'], 'presaclon': TOKENS['PRESACLON'], 'depredadorclon': TOKENS['DEPREDADORCLON'], 
     'aterrizar': TOKENS['ATERRIZAR'], 'pluma': TOKENS['PLUMA'], 'capturar': TOKENS['CAPTURAR'], 
     'reprender': TOKENS['REPRENDER'], 'renacer': TOKENS['RENACER'], 'transformar': TOKENS['TRANSFORMAR'], 
-    'amenaza': TOKENS['AMENAZA'], 'bajo': TOKENS['BAJO'], 'medio': TOKENS['MEDIO'], 'alto': TOKENS['ALTO'], 
-    'minimo': TOKENS['MINIMO'], 'maximo': TOKENS['MAXIMO'],
+    
+    'conejo': TOKENS['CONEJO'], 'oso come': TOKENS['OSO_COME'], 'panda come': TOKENS['PANDA_COME'],
+    
     'esconejo?': TOKENS['ESCONEJO?'], 'eslobo?': TOKENS['ESLOBO?'], 'desolado?': TOKENS['DESOLADO?'], 
-    'salvaje': TOKENS['SALVAJE'], 'docil': TOKENS['DOCIL']
+    'salvaje': TOKENS['SALVAJE'], 'docil': TOKENS['DOCIL'],
+    'rugiroveja': TOKENS['RUGIROVEJA'], 'rugirhuella': TOKENS['RUGIRHUELLA'], 
+    'rugirserpiente': TOKENS['RUGIRSERPIENTE'], 'rugirgato': TOKENS['RUGIRGATO'],
+    'oleroveja': TOKENS['OLEROVEJA'], 'olerhuella': TOKENS['OLERHUELLA'], 
+    'olerserpiente': TOKENS['OLERSERPIENTE'], 'olergato': TOKENS['OLERGATO']
 }
 
 class Token:
@@ -196,6 +214,22 @@ class ScannerPasCat:
 
         # Identificadores y Palabras Reservadas
         if actual.isalpha() or actual == '_':
+            # Vistazo especial para literales compuestas del tipo creativo
+            vistazo_oso = self.codigo[self.pos:self.pos+8].lower()
+            vistazo_panda = self.codigo[self.pos:self.pos+10].lower()
+            
+            if vistazo_oso == "oso come":
+                self.pos += 8; self.columna += 8
+                t = Token(TOKENS['OSO_COME'], "oso come", self.linea, col_inicio)
+                self.registrar_estadistica_familia(t.tipo)
+                return t
+            elif vistazo_panda == "panda come":
+                self.pos += 10; self.columna += 10
+                t = Token(TOKENS['PANDA_COME'], "panda come", self.linea, col_inicio)
+                self.registrar_estadistica_familia(t.tipo)
+                return t
+            
+            # Flujo normal de variables y reservas
             lexema = ""
             while self.ver_actual() is not None and (self.ver_actual().isalnum() or self.ver_actual() == '_' or self.ver_actual() == '?'):
                 lexema += self.ver_actual()
@@ -335,13 +369,13 @@ class ScannerPasCat:
             self.registrar_estadistica_familia(t.tipo)
             return t
 
-        # Símbolos simples directos (incluye matemáticas para Ejemplo.Cat)
+        # Símbolos simples directos
         simbolos_simples = {
             '(': TOKENS['PAR_ABRE'], ')': TOKENS['PAR_CIERRA'], 
             '[': TOKENS['COR_ABRE'], ']': TOKENS['COR_CIERRA'],
             '{': TOKENS['LLAVE_ABRE'], '}': TOKENS['LLAVE_CIERRA'],
             ',': TOKENS['COMA'], ':': TOKENS['DOS_PUNTOS'], '@': TOKENS['ACCESO_REG'],
-            '+': TOKENS['SUMA'], '*': TOKENS['MULTIPLICACION']
+            '$': TOKENS['DOLAR']
         }
         if actual in simbolos_simples:
             self.avanzar()
