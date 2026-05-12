@@ -1,0 +1,18 @@
+=== Inicio del Análisis Sintáctico ===
+
+[!] Error Sintactico [Linea 5]: Estructura inesperada evaluando '<Ids>'. Iniciando recuperacion... (Token actual: ',')
+   -> Sincronizado en token '~' (Linea 5). Retomando analisis...
+[!] Error Sintactico [Linea 5]: Se esperaba el terminal 'habita'. (Token actual: '~')
+[!] Error Sintactico [Linea 5]: Estructura inesperada evaluando '<Tipo-Habita>'. Iniciando recuperacion... (Token actual: '~')
+   -> Sincronizado en token '~' (Linea 5). Retomando analisis...
+[!] Error Sintactico [Linea 8]: Estructura inesperada evaluando '<Dec-variable>'. Iniciando recuperacion... (Token actual: 'promedio')
+   -> Sincronizado en token '~' (Linea 8). Retomando analisis...
+[!] Error Sintactico [Linea 8]: Se esperaba el terminal '~~'. (Token actual: '~')
+[!] Error Sintactico [Linea 8]: Estructura inesperada evaluando '<Procesos>'. Iniciando recuperacion... (Token actual: '~')
+   -> Sincronizado en token '~' (Linea 8). Retomando analisis...
+[!] Error Sintactico [Linea 8]: Estructura inesperada evaluando '<Entrada>'. Iniciando recuperacion... (Token actual: '~')
+   -> Sincronizado en token '~' (Linea 8). Retomando analisis...
+[!] Error Sintactico [Linea 8]: Se esperaba el terminal 'Muerte'. (Token actual: '~')
+[!] Error Sintactico [Linea 8]: Se esperaba el terminal 'Id'. (Token actual: '~')
+[!] Error Sintactico [Linea 8]: Se esperaba el terminal '~~'. (Token actual: '~')
+[!] Error Sintactico [Linea 8]: Se esperaba el fin de archivo, pero hay mas codigo. (Token actual: '~')

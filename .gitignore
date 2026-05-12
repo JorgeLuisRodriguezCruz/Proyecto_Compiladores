@@ -3,3 +3,8 @@ Documentación/
 *.exe
 *.obj
 *.map
+
+conjuntos
+source
+
+generar_tabla.py
