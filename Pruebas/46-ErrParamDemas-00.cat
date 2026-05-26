@@ -1,0 +1,15 @@
+=^.^= Esta es una prueba en la que se tiene el error de pasar mas parametros de los que recibe la funcion
+Reino sonDemasiados ~ 
+Huevos
+    entrenar suma (Oveja num1, num2) Oveja ~
+~~ 
+Comportamientos  
+    entrenar suma  ~
+    planton
+        perro result num1 boa num2 ~
+    delfin
+~~ 
+Nacimiento 
+
+    rugirOveja(suma(5, 8, 22, 33)) ~
+Muerte sonDemasiados ~~

@@ -1,0 +1,9 @@
+=^.^= Se prueba error al usar una palabra reservada como parametro
+Reino yaEstaReservado
+Organismos 
+    =^.^= cabeza es palabra reservada es nuestro default del switch
+    mano, ojo, cabeza habita Serpiente ~
+~~ 
+Nacimiento
+    rugirSerpiente("compilando...") ~
+Muerte yaEstaReservado

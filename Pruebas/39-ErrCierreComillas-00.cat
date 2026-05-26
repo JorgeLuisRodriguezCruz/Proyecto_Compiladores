@@ -1,0 +1,8 @@
+=^.^= Se prueba el error de tener comillas sin cerrar
+Reino miComillaPerdida
+Organismos 
+    mensaje habita Serpiente adopta "hola_querido ~
+~~
+Nacimiento
+    rugirSerpiente(mensaje) ~
+Muerte miComillaPerdida

@@ -1,0 +1,10 @@
+=^.^= Se prueba error por uso incorrecto de operaciones aritmeticos
+Reino aritmeticAtropellada
+Organismos 
+    num1, num2, result habita Oveja ~
+~~ 
+Nacimiento
+    num1 adopta 3 ~
+    num1 adopta 23 ~
+    result adopta num1 boa Emu num2 ~
+Muerte aritmeticAtropellada

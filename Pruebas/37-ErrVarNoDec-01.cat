@@ -1,0 +1,15 @@
+=^.^= Esta es una prueba en la que se usa una variable que no se ha declarado en una funcion
+Reino testErrorVarNDec_Func ~ 
+Huevos
+    entrenar suma (Oveja num1, num2) Oveja ~
+~~ 
+Comportamientos  
+    entrenar suma  ~
+    planton
+        result num1 boa num2 ~
+        perro result ~
+    delfin
+~~ 
+Nacimiento 
+    rugirOveja(suma(5,8)) ~
+Muerte testErrorVarNDec_Func ~~

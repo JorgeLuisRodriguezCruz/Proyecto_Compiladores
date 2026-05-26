@@ -1,0 +1,11 @@
+=^.^= Se prueba error de tener una instruccion sin el terminador en nuestro caso ~
+Reino sinTerminar
+Organismos 
+    edad habita Oveja adopta 700 ~
+~~ 
+Nacimiento
+    =^.^= aquí falta el terminador (~)
+    edad adopta edad Can 645
+    rugirSerpiente("Un jovencito de") ~
+    rugirOveja(edad) ~
+Muerte sinTerminar

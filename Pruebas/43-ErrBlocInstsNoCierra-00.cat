@@ -1,0 +1,13 @@
+=^.^= Se prueba error de iniciar un bloque de multiples instrucciones y no cerrarlo
+Reino empiezaPeroNoTermina
+Organismos 
+    edad habita Oveja adopta 13 ~
+~~ 
+Nacimiento 
+    cortejo (edad depredador 18) atrae
+    Plancton
+        rugirSerpiente("Este niño...") ~
+        rugirSerpiente("Ya es mayor de edad!!") ~
+    repele 
+        rugirSerpiente("Eres un bebe") ~~
+Muerte empiezaPeroNoTermina

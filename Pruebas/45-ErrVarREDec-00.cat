@@ -1,0 +1,12 @@
+=^.^= Esta es una prueba en la que prueba el error de redeclarar una variable
+Reino redeclaro ~ 
+Organismos 
+    tiempo, cantidad, costo habita Oveja ~
+    =^.^= tiempo ya esta declarado 
+    tiempo habita Serpiente ~
+~~ 
+Nacimiento     
+    costo adopta cantidad boa tiempo ~ 
+    rugirSerpiente("Este es el costo") ~ 
+    rugirOveja(costo) ~ 
+Muerte redeclaro ~~

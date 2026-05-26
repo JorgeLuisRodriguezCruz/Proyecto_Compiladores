@@ -1,0 +1,11 @@
+=^.^= Esta es una prueba en la que se usa una variable que no se ha declarado (costo)
+Reino testErrorVarNDec ~ 
+Organismos 
+    tiempo, cantidad habita Oveja ~
+~~ 
+Nacimiento 
+    =^.^=  La variable costo no se ha definido previamente
+    costo adopta cantidad boa tiempo ~ 
+    rugirSerpiente("Este es el costo") ~ 
+    rugirOveja(costo) ~ 
+Muerte testErrorVarNDec ~~

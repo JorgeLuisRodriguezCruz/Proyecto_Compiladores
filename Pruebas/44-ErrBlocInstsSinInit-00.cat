@@ -1,0 +1,12 @@
+=^.^= Se prueba error de en el que se termina un bloque de multiples instrucciones y pero no se indica el inicio.
+Reino terminaPeroNoEmpieza
+Organismos 
+    edad habita Oveja adopta 13 ~
+~~ 
+Nacimiento 
+    cortejo (edad depredador 18) atrae    
+        rugirSerpiente("Este niño...") ~
+        rugirSerpiente("Ya es mayor de edad!!") ~
+    delfin repele 
+        rugirSerpiente("Eres un bebe") ~ ~
+Muerte terminaPeroNoEmpieza
