@@ -1,0 +1,12 @@
+Reino Minimal ~
+Organismos
+    x habita Oveja adopta 5 ~
+~~
+Comportamientos
+    entrenar foo (Oveja y) Oveja ~ plancton
+        y adopta 5 boa 5 ~
+    delfin
+~~
+Nacimiento
+    x adopta 5 boa 5 ~
+Muerte Minimal ~~

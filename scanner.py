@@ -22,7 +22,10 @@ import html
 # DICCIONARIO DE TOKENS Y FAMILIAS (V1.3)
 # ==========================================
 TOKENS = {
-    'ID': 10, 'LIT_OVEJA': 20, 'LIT_HUELLA': 21, 'LIT_SERPIENTE': 22, 'LIT_GATO': 23,
+    'ID': 10, 'ID_FUNC': 11, 'ID_OP_ARIT': 12, 'ID_OP_CAR': 13,
+    'ID_OP_LOG': 14, 'ID_OP_STR': 15, 'ID_OP_CONJ': 16, 'ID_OP_COM': 17, 'ID_OP_CREAT': 18,
+    'ID_ATRIBUTO': 19,
+    'LIT_OVEJA': 20, 'LIT_HUELLA': 21, 'LIT_SERPIENTE': 22, 'LIT_GATO': 23, 'LIT_COLM': 24,
     
     # Familia 2: Estructura, Control y Nombres de bloques
     'REINO': 100, 'MUERTE': 101, 'RESERVA': 102, 'ESPECIES': 103,
@@ -130,11 +133,7 @@ PALABRAS_RESERVADAS = {
     'conejo': TOKENS['CONEJO'], 'oso come': TOKENS['OSO_COME'], 'panda come': TOKENS['PANDA_COME'],
     
     'esconejo?': TOKENS['ESCONEJO?'], 'eslobo?': TOKENS['ESLOBO?'], 'desolado?': TOKENS['DESOLADO?'], 
-    'salvaje': TOKENS['SALVAJE'], 'docil': TOKENS['DOCIL'],
-    'rugiroveja': TOKENS['RUGIROVEJA'], 'rugirhuella': TOKENS['RUGIRHUELLA'], 
-    'rugirserpiente': TOKENS['RUGIRSERPIENTE'], 'rugirgato': TOKENS['RUGIRGATO'],
-    'oleroveja': TOKENS['OLEROVEJA'], 'olerhuella': TOKENS['OLERHUELLA'], 
-    'olerserpiente': TOKENS['OLERSERPIENTE'], 'olergato': TOKENS['OLERGATO']
+    'salvaje': TOKENS['SALVAJE'], 'docil': TOKENS['DOCIL']
 }
 
 class Token:
@@ -151,6 +150,8 @@ class ScannerPasCat:
         self.linea = 1
         self.columna = 1
         self.token_guardado = None
+        self.dentro_coleccion = False
+        self.proximo_es_id_atributo = False
         self.estadisticas = {
             'lineas': 0, 'caracteres': 0, 'errores': 0,
             'com_linea': 0, 'com_bloque': 0, 'familias': {}
@@ -185,6 +186,14 @@ class ScannerPasCat:
             return self.codigo[self.pos]
         return None
 
+    def ver_siguiente_no_espacio(self):
+        i = self.pos
+        while i < len(self.codigo) and self.codigo[i] in (' ', '\t', '\n', '\r'):
+            i += 1
+        if i < len(self.codigo):
+            return self.codigo[i]
+        return None
+
     def registrar_estadistica_familia(self, tipo):
         familia = "Desconocida"
         if 10 <= tipo <= 49: familia = "Fam 1: Identificadores y Literales"
@@ -212,6 +221,9 @@ class ScannerPasCat:
 
         col_inicio = self.columna
 
+        if self.proximo_es_id_atributo and not (actual.isalpha() or actual == '_'):
+            self.proximo_es_id_atributo = False
+
         # Identificadores y Palabras Reservadas
         if actual.isalpha() or actual == '_':
             # Vistazo especial para literales compuestas del tipo creativo
@@ -238,10 +250,25 @@ class ScannerPasCat:
             lexema_lower = lexema.lower()
             if lexema_lower in ['v', 'm', 'vivo', 'muerto']:
                 t = Token(TOKENS['LIT_GATO'], lexema, self.linea, col_inicio)
+                if self.dentro_coleccion:
+                    t.tipo = TOKENS['LIT_COLM']
+                self.registrar_estadistica_familia(t.tipo)
+                return t
             elif lexema_lower in PALABRAS_RESERVADAS:
                 t = Token(PALABRAS_RESERVADAS[lexema_lower], lexema, self.linea, col_inicio)
+                self.registrar_estadistica_familia(t.tipo)
+                return t
+            elif self.proximo_es_id_atributo:
+                self.proximo_es_id_atributo = False
+                t = Token(TOKENS['ID_ATRIBUTO'], lexema, self.linea, col_inicio)
+                self.registrar_estadistica_familia(t.tipo)
+                return t
             else:
                 t = Token(TOKENS['ID'], lexema, self.linea, col_inicio)
+
+            if self.pos < len(self.codigo) and self.codigo[self.pos] == '(':
+                t.tipo = TOKENS['ID_FUNC']
+
             self.registrar_estadistica_familia(t.tipo)
             return t
 
@@ -254,7 +281,8 @@ class ScannerPasCat:
             while self.ver_actual() is not None and self.ver_actual().isdigit():
                 lexema += self.ver_actual()
                 self.avanzar()
-            t = Token(TOKENS['LIT_OVEJA'], lexema, self.linea, col_inicio)
+            tipo_lit = TOKENS['LIT_COLM'] if self.dentro_coleccion else TOKENS['LIT_OVEJA']
+            t = Token(tipo_lit, lexema, self.linea, col_inicio)
             self.registrar_estadistica_familia(t.tipo)
             return t
 
@@ -268,7 +296,8 @@ class ScannerPasCat:
             if self.ver_actual() == '"':
                 lexema += '"'
                 self.avanzar()
-                t = Token(TOKENS['LIT_SERPIENTE'], lexema, self.linea, col_inicio)
+                tipo_lit = TOKENS['LIT_COLM'] if self.dentro_coleccion else TOKENS['LIT_SERPIENTE']
+                t = Token(tipo_lit, lexema, self.linea, col_inicio)
                 self.registrar_estadistica_familia(t.tipo)
                 return t
             else:
@@ -285,7 +314,8 @@ class ScannerPasCat:
             if self.ver_actual() == "'":
                 lexema += "'"
                 self.avanzar()
-                t = Token(TOKENS['LIT_HUELLA'], lexema, self.linea, col_inicio)
+                tipo_lit = TOKENS['LIT_COLM'] if self.dentro_coleccion else TOKENS['LIT_HUELLA']
+                t = Token(tipo_lit, lexema, self.linea, col_inicio)
                 self.registrar_estadistica_familia(t.tipo)
                 return t
             else:
@@ -369,13 +399,56 @@ class ScannerPasCat:
             self.registrar_estadistica_familia(t.tipo)
             return t
 
+        # Símbolos compuestos y simples directos
+        if actual == '{':
+            self.avanzar()
+            if self.ver_actual() == '[':
+                self.avanzar()
+                t = Token(TOKENS['LLAVE_ABRE'], '{[', self.linea, col_inicio)
+            elif self.ver_actual() == '@':
+                self.avanzar()
+                t = Token(TOKENS['LLAVE_ABRE'], '{@', self.linea, col_inicio)
+            else:
+                t = Token(TOKENS['LLAVE_ABRE'], '{', self.linea, col_inicio)
+            self.dentro_coleccion = True
+            self.registrar_estadistica_familia(t.tipo)
+            return t
+
+        if actual == '}':
+            self.avanzar()
+            t = Token(TOKENS['LLAVE_CIERRA'], '}', self.linea, col_inicio)
+            self.dentro_coleccion = False
+            self.registrar_estadistica_familia(t.tipo)
+            return t
+
+        if actual == ']':
+            self.avanzar()
+            if self.ver_actual() == '}':
+                self.avanzar()
+                t = Token(TOKENS['COR_CIERRA'], ']}', self.linea, col_inicio)
+            else:
+                t = Token(TOKENS['COR_CIERRA'], ']', self.linea, col_inicio)
+            self.dentro_coleccion = False
+            self.registrar_estadistica_familia(t.tipo)
+            return t
+
+        if actual == '@':
+            self.avanzar()
+            if self.ver_actual() == '}':
+                self.avanzar()
+                self.dentro_coleccion = False
+                t = Token(TOKENS['ACCESO_REG'], '@}', self.linea, col_inicio)
+            else:
+                self.proximo_es_id_atributo = True
+                t = Token(TOKENS['ACCESO_REG'], '@', self.linea, col_inicio)
+            self.registrar_estadistica_familia(t.tipo)
+            return t
+
         # Símbolos simples directos
         simbolos_simples = {
             '(': TOKENS['PAR_ABRE'], ')': TOKENS['PAR_CIERRA'], 
-            '[': TOKENS['COR_ABRE'], ']': TOKENS['COR_CIERRA'],
-            '{': TOKENS['LLAVE_ABRE'], '}': TOKENS['LLAVE_CIERRA'],
-            ',': TOKENS['COMA'], ':': TOKENS['DOS_PUNTOS'], '@': TOKENS['ACCESO_REG'],
-            '$': TOKENS['DOLAR']
+            ',': TOKENS['COMA'], ':': TOKENS['DOS_PUNTOS'],
+            '$': TOKENS['DOLAR'], '[': TOKENS['COR_ABRE']
         }
         if actual in simbolos_simples:
             self.avanzar()

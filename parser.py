@@ -1,11 +1,12 @@
 class ParserPasCat:
-    def __init__(self, scanner, tabla_parsing):
+    def __init__(self, scanner, tabla_parsing, analizador_contextual=None):
         self.scanner = scanner
         self.tabla_parsing = tabla_parsing
+        self.analizador = analizador_contextual
         self.pila = []
         self.token_actual = None
         
-        self.tokens_sincronizacion = ['~', '~~', 'plancton', 'delfin', 'Muerte', 'EOF']
+        self.tokens_sincronizacion = ['~', '~~', 'plancton', 'delfin', 'Muerte', 'Reino', 'Nacimiento', 'EOF']
         
         self.archivo_log = open("reporte_sintactico.log", "w", encoding="utf-8")
         self.archivo_log.write("=== Inicio del Análisis Sintáctico ===\n\n")
@@ -20,6 +21,8 @@ class ParserPasCat:
         self.archivo_log.write(error_str)
 
     def es_terminal(self, simbolo):
+        if isinstance(simbolo, int):
+            return False
         return not (simbolo.startswith('<') and simbolo.endswith('>'))
 
     def obtener_nombre(self):
@@ -29,22 +32,30 @@ class ParserPasCat:
             lexema_lower = lexema_str.lower()
             tipo = self.token_actual.tipo
 
-            # Detectar el Fin de Archivo (EOF) de forma segura
-            if lexema_lower == 'eof' or (lexema_str == '' and tipo in [0, -1, 'EOF']): 
+            if lexema_lower in ('eof',) or (lexema_str == '' and tipo in (0, -1, 'EOF')): 
                 return 'EOF'
 
-            # Clasificación de familias
-            if tipo == 10: 
-                if lexema_lower in ['muerto', 'vivo', 'minimo', 'bajo', 'medio', 'alto', 'maximo']:
+            if tipo == 10:
+                if lexema_lower in ('muerto', 'vivo', 'minimo', 'bajo', 'medio', 'alto', 'maximo'):
                     return lexema_lower
                 return 'Id'
-            elif tipo == 20: return 'lit-oveja'
-            elif tipo == 21: return 'lit-huella'
-            elif tipo == 22: return 'lit-serpiente'
-            
+            if tipo == 11: return 'Id_Func'
+            if tipo == 12: return 'Id_Op_Aritmetico'
+            if tipo == 13: return 'Id_Op_Caracter'
+            if tipo == 14: return 'Id_Op_Logico'
+            if tipo == 15: return 'Id_Op_Str'
+            if tipo == 16: return 'Id_Op_Conj'
+            if tipo == 17: return 'Id_Op_Com'
+            if tipo == 18: return 'Id_Op_Creat'
+            if tipo == 19: return 'Id-atributo'
+            if tipo == 20: return 'lit-oveja'
+            if tipo == 21: return 'lit-huella'
+            if tipo == 22: return 'lit-serpiente'
+            if tipo == 24: return 'lit-colm'
+
             if lexema_lower in self.terminales_gikgram:
                 return self.terminales_gikgram[lexema_lower]
-                
+
             return str(self.token_actual.lexema)
 
     def pedir_token(self):
@@ -90,7 +101,13 @@ class ParserPasCat:
 
         while len(self.pila) > 0:
             cima = self.pila[-1]
-            nombre_actual = self.obtener_nombre() # ¡Usamos el traductor!
+            nombre_actual = self.obtener_nombre()
+
+            if isinstance(cima, int):
+                if self.analizador:
+                    self.analizador.ejecutar(cima, self.token_actual)
+                self.pila.pop()
+                continue
 
             if cima == 'EOF':
                 if nombre_actual == 'EOF':
@@ -103,6 +120,8 @@ class ParserPasCat:
 
             elif self.es_terminal(cima):
                 if cima == nombre_actual:
+                    if self.analizador:
+                        self.analizador.notificar_terminal(cima, self.token_actual)
                     self.pila.pop()
                     self.token_actual = self.pedir_token()
                 else:
