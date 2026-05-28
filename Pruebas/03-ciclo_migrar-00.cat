@@ -5,6 +5,9 @@ Reino migrando ~
 Organismos
 	contador habita Oveja ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
 	=^.^= Se incrementa en 1 el valor de la variable con la instruccion Acariciar
 	=^.^= Equivalencia - for contador := 0 to 50 do 

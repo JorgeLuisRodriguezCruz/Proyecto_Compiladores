@@ -5,6 +5,9 @@ Organismos
     esAdulto habita Gato ~
     edad habita Oveja ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     rugirSerpiente("Edad: ") ~
     edad adopta olerOveja() ~

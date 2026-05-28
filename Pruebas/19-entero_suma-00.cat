@@ -6,6 +6,9 @@ Organismos
     b habita Oveja ~
     resultado habita Oveja ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     rugirSerpiente("Ingrese primer numero: ") ~
     a adopta olerOveja() ~
@@ -13,7 +16,7 @@ Nacimiento
     rugirSerpiente("Ingrese segundo numero: ") ~
     b adopta olerOveja() ~
 
-    resultado adopta a pez b ~
+    resultado adopta a boa b ~
 
     rugirSerpiente("El resultado es: ") ~
     rugirOveja(resultado) ~

@@ -1,10 +1,21 @@
 === Inicio del Análisis Sintáctico ===
 
-[!] Error Sintactico [Linea 8]: Estructura inesperada evaluando '<Procesos>'. Iniciando recuperacion... (Token actual: 'Nacimiento')
-   -> Sincronizado en token 'Nacimiento' (Linea 8). Retomando analisis...
-[!] Error Sintactico [Linea 9]: Estructura inesperada evaluando '<Instrucciones>'. Iniciando recuperacion... (Token actual: 'rugirSerpiente')
-   -> Sincronizado en token '~' (Linea 9). Retomando analisis...
-[!] Error Sintactico [Linea 9]: Se esperaba el terminal 'Muerte'. (Token actual: '~')
-[!] Error Sintactico [Linea 9]: Se esperaba el terminal 'Id'. (Token actual: '~')
-[!] Error Sintactico [Linea 9]: Se esperaba el terminal '~~'. (Token actual: '~')
-[!] Error Sintactico [Linea 9]: Se esperaba el fin de archivo, pero hay mas codigo. (Token actual: '~')
+[!] Error Sintactico [Linea 45]: Estructura inesperada evaluando '<Resto-param>'. Iniciando recuperacion... (Token actual: 'entrada')
+   -> Sincronizado en token '~' (Linea 45). Retomando analisis...
+[!] Error Sintactico [Linea 45]: Se esperaba el terminal ')'. (Token actual: '~')
+[!] Error Sintactico [Linea 45]: Estructura inesperada evaluando '<Atomicos>'. Iniciando recuperacion... (Token actual: '~')
+   -> Sincronizado en token '~' (Linea 45). Retomando analisis...
+[!] Error Sintactico [Linea 46]: Estructura inesperada evaluando '<Resto-Adopta>'. Iniciando recuperacion... (Token actual: 'entrada')
+   -> Sincronizado en token '~' (Linea 46). Retomando analisis...
+[!] Error Sintactico [Linea 46]: Estructura inesperada evaluando '<Instrucciones>'. Iniciando recuperacion... (Token actual: '~')
+   -> Sincronizado en token '~' (Linea 46). Retomando analisis...
+[!] Error Sintactico [Linea 46]: Se esperaba el terminal 'delfin'. (Token actual: '~')
+[!] Error Sintactico [Linea 46]: Estructura inesperada evaluando '<Dec-rutinas>'. Iniciando recuperacion... (Token actual: '~')
+   -> Sincronizado en token '~' (Linea 46). Retomando analisis...
+[!] Error Sintactico [Linea 46]: Se esperaba el terminal '~~'. (Token actual: '~')
+[!] Error Sintactico [Linea 46]: Estructura inesperada evaluando '<Entrada>'. Iniciando recuperacion... (Token actual: '~')
+   -> Sincronizado en token '~' (Linea 46). Retomando analisis...
+[!] Error Sintactico [Linea 46]: Se esperaba el terminal 'Muerte'. (Token actual: '~')
+[!] Error Sintactico [Linea 46]: Se esperaba el terminal 'Id'. (Token actual: '~')
+[!] Error Sintactico [Linea 46]: Se esperaba el terminal '~~'. (Token actual: '~')
+[!] Error Sintactico [Linea 46]: Se esperaba el fin de archivo, pero hay mas codigo. (Token actual: '~')

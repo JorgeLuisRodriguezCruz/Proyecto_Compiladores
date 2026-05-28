@@ -5,6 +5,9 @@ Reino tiburonTornado ~
 Organismos
     contador habita Oveja adopta 0 ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento 
 
     =^.^= Equivalencia - While (contador < 50) do

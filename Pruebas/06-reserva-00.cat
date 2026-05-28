@@ -8,7 +8,10 @@ Reserva
 Organismos
     valor habita Oveja ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
-    valor adopta LIMITE pez PI ~
+    valor adopta LIMITE boa PI ~
     rugirOveja(valor) ~
 Muerte PruebaConstantes ~~

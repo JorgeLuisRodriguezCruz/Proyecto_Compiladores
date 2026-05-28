@@ -5,7 +5,10 @@ Organismos
     x, y, z habita Oveja ~
     
     =^.^= Los flotantes usan animales marinos
-    promedio habita Medusa adopta 9 ~
+    promedio habita Oveja adopta 9 ~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     x adopta 10 ~
     y adopta 20 ~

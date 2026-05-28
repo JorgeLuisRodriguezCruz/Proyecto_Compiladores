@@ -4,6 +4,9 @@ Reino PruebaCorral ~
 Organismos
     datos habita Corral Oveja [3] adopta {[ 10, 20, 30 ]} ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     rugirOveja(datos[0]) ~
     rugirOveja(datos[1]) ~

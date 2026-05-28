@@ -2,6 +2,9 @@
 Reino PruebaErrores ~
 Organismos
     num habita Oveja adopta 10 ~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     =^.^= Error 1: Simbolo no reconocido en PasCat V1.3 (#)
     num adopta num # 5 ~

@@ -4,6 +4,9 @@ Organismos
     =^.^= cabeza es palabra reservada es nuestro default del switch
     mano, ojo, cabeza habita Serpiente ~
 ~~ 
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     rugirSerpiente("compilando...") ~
 Muerte yaEstaReservado

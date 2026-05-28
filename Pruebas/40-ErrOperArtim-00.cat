@@ -3,6 +3,9 @@ Reino aritmeticAtropellada
 Organismos 
     num1, num2, result habita Oveja ~
 ~~ 
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     num1 adopta 3 ~
     num1 adopta 23 ~

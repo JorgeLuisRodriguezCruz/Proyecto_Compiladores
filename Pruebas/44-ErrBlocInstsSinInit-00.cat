@@ -3,6 +3,9 @@ Reino terminaPeroNoEmpieza
 Organismos 
     edad habita Oveja adopta 13 ~
 ~~ 
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento 
     cortejo (edad depredador 18) atrae    
         rugirSerpiente("Este niño...") ~

@@ -9,6 +9,9 @@ Reino PruebaTextos ~
 Organismos
     texto1 habita Serpiente adopta "" ~ =^.^= String vacio
     letra habita Huella adopta ' ' ~ =^.^= Char con espacio en blanco
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     =^.^= String con numeros y simbolos validos
     texto1 adopta "String con espacios, 12345 y $imbolos!" ~

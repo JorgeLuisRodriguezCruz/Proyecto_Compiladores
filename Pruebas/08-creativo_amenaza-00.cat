@@ -6,6 +6,9 @@ Organismos
     bandera habita peligro adopta minimo ~ 
     mensaje habita Serpiente adopta "No estoy en peligro." ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     =^.^= Cuando el nivel de peligro de la bandera aumente lo suficiente se sale del ciclo
     tiburon amenaza bandera clon vivo sangre

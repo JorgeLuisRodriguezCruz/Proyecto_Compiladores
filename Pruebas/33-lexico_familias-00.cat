@@ -9,6 +9,9 @@ Organismos
     var2 habita Serpiente adopta "Hola PasCat" ~
     var3 habita Huella adopta 'X' ~
     var4 habita Gato adopta vivo ~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     =^.^= Familia de operadores aritmeticos (Oveja)
     var1 adopta var1 boa 5 ~

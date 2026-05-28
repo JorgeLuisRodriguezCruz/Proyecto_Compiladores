@@ -8,3 +8,5 @@ conjuntos
 source
 
 generar_tabla.py
+convertir_tests.py
+diagnostico.py

@@ -4,6 +4,9 @@ Reino PruebaAtraeRepele ~
 Organismos
       clima habita Oveja ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
 	rugirSerpiente("Temperatura: ") ~
 	clima adopta olerOveja() ~

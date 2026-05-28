@@ -7,8 +7,11 @@ Organismos
     altura habita Oveja adopta 5 ~
     area habita Oveja ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
-    area adopta base cuy altura ~
+    area adopta base can altura ~
     rugirSerpiente("Area calculada: ") ~
     rugirOveja(area) ~ 
 

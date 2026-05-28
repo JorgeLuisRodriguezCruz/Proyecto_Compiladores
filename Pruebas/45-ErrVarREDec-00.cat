@@ -5,6 +5,9 @@ Organismos
     =^.^= tiempo ya esta declarado 
     tiempo habita Serpiente ~
 ~~ 
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento     
     costo adopta cantidad boa tiempo ~ 
     rugirSerpiente("Este es el costo") ~ 

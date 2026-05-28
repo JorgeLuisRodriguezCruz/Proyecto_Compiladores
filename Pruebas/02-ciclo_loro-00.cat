@@ -5,6 +5,9 @@ Reino loroCiclon ~
 Organismos
     contador habita Oveja adopta 0 ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento 
     loro 
         plancton

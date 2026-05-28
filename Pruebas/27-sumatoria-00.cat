@@ -6,11 +6,14 @@ Organismos
     i habita Oveja adopta 1 ~
     suma habita Oveja adopta 0 ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     tiburon i presaclon n sangre
 	plancton
         i adopta Acariciar i ~
-        suma adopta suma pez i ~
+        suma adopta suma boa i ~
     delfin ~
     rugirOveja(suma) ~
 

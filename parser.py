@@ -119,7 +119,10 @@ class ParserPasCat:
                 break
 
             elif self.es_terminal(cima):
-                if cima == nombre_actual:
+                coincide = (cima == nombre_actual or
+                            (cima == 'Id' and nombre_actual == 'Id_Func') or
+                            (cima == 'Id_Func' and nombre_actual == 'Id'))
+                if coincide:
                     if self.analizador:
                         self.analizador.notificar_terminal(cima, self.token_actual)
                     self.pila.pop()

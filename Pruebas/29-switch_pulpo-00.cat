@@ -2,6 +2,9 @@
 Reino PruebaPulpo ~
 Organismos
     opcion habita Oveja adopta 2 ~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     pulpo opcion
     plancton

@@ -3,6 +3,9 @@ Reino testErrorVarNDec ~
 Organismos 
     tiempo, cantidad habita Oveja ~
 ~~ 
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento 
     =^.^=  La variable costo no se ha definido previamente
     costo adopta cantidad boa tiempo ~ 

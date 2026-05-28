@@ -5,6 +5,9 @@ Organismos
     texto2 habita Serpiente adopta " PasCat" ~
     resultado habita Serpiente ~
     longitud habita Oveja ~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     =^.^= Prueba de concatenacion
     resultado adopta texto1 enroscar texto2 ~

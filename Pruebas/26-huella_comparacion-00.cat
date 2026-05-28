@@ -4,6 +4,9 @@ Reino CompararHuella ~
 Organismos
     letra habita Huella adopta 'A' ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     cortejo letra clon 'A'
     atrae

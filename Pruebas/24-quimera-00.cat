@@ -11,6 +11,9 @@ Especies
 Organismos
     sujeto habita animal ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     sujeto@id adopta 505 ~
     sujeto@tipo adopta "Mamifero" ~

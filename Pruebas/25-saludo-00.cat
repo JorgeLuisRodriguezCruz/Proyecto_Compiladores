@@ -1,5 +1,8 @@
 Reino Saludo ~
 
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     rugirSerpiente("Bienvenido al sistema Reino") ~ 
 

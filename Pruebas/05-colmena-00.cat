@@ -4,6 +4,9 @@ Reino pruebaColmena ~
 Organismos
     letras habita Colmena adopta { 'x' , 'y' , 'z' } ~
 ~~
+Comportamientos
+    entrenar dummy ~ plancton delfin
+~~
 Nacimiento
     rugirColmena(letras) ~
 Muerte pruebaColmena ~~ 

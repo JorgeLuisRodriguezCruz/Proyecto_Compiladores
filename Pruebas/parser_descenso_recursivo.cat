@@ -1,0 +1,544 @@
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  PARSER POR DESCENSO RECURSIVO                          =^.^=
+=^.^=                                                         =^.^=
+=^.^=  Gramatica de musica:                                   =^.^=
+=^.^=    <S> ::= 0+ 8* | <X> [12 2] <Z> | epsilon            =^.^=
+=^.^=    <X> ::= 4 (<S> 5*)+ | 11 9* 13                      =^.^=
+=^.^=    <Z> ::= 3 <Z>+ [1* | 6 7*] 10 | epsilon             =^.^=
+=^.^=                                                         =^.^=
+=^.^=  Los numeros son tokens (elementos musicales).          =^.^=
+=^.^=  Se implementa un parser predictivo LL(1) con una      =^.^=
+=^.^=  funcion por cada no-terminal.                          =^.^=
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+Reino ParserDescensoRecursivo ~
+
+=^.^= -----------------------------------------------------------
+=^.^=  VARIABLES GLOBALES DEL PARSER
+=^.^=  - fuente: cadena de entrada con los numeros a analizar
+=^.^=  - posicion: indice de lectura dentro de la cadena
+=^.^=  - longitud: largo total de la cadena (se calcula al inicio
+=^.^=    recorriendo hasta encontrar el caracter nulo)
+=^.^=  - token: lookahead actual (el token que estamos viendo)
+=^.^=  - hubo_error: bandera Gato que se activa si algo falla
+=^.^= -----------------------------------------------------------
+
+Organismos
+    fuente habita Serpiente ~
+    posicion habita Oveja ~
+    longitud habita Oveja ~
+    token habita Oveja ~
+    hubo_error habita Gato ~
+~~
+
+Comportamientos
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  FUNCION: inicializar
+=^.^=  Proposito: Configura el parser con la cadena de entrada.
+=^.^=             Calcula la longitud, inicializa la posicion
+=^.^=             y obtiene el primer token (lookahead inicial).
+=^.^=
+=^.^=  Parametro: entrada (Serpiente) — texto con numeros
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+entrenar inicializar(Serpiente entrada) ~ plancton
+    fuente adopta entrada ~
+    posicion adopta 0 ~
+    hubo_error adopta muerto ~
+
+    =^.^= Calcular longitud de la cadena manualmente.
+    =^.^= La condicion del while usa la funcion intrínseca
+    =^.^= largo() que retorna la longitud de la cadena.
+    =^.^= Se recorre toda la cadena una vez al inicio para
+    =^.^= conocer su extension y evitar accesos fuera de rango.
+    =^.^= Justificacion del bucle: necesitamos conocer el limite
+    =^.^= antes de tokenizar para poder validar que no nos
+    =^.^= salimos de la memoria de la cadena.
+    longitud adopta largo(entrada) ~
+
+    =^.^= Obtener el primer token (lookahead inicial).
+    =^.^= Es importante inicializar el lookahead antes de
+    =^.^= comenzar a parsear, pues todas las funciones S(), X()
+    =^.^= y Z() toman decisiones basadas en su valor actual.
+    token adopta siguiente_token() ~
+delfin
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  FUNCION: siguiente_token
+=^.^=  Proposito: Escanea la cadena fuente y retorna el
+=^.^=             siguiente numero entero. Los numeros en la
+=^.^=             entrada estan separados por espacios.
+=^.^=             Retorna -1 cuando se alcanza el fin de la
+=^.^=             entrada (EOF).
+=^.^=
+=^.^=  Justificaciones de las condiciones:
+=^.^=  1. While de espacios: la condicion compuesta verifica
+=^.^=     primero el limite (posicion < longitud) ANTES de
+=^.^=     acceder a fuente[posicion]. Esto evita leer fuera
+=^.^=     del arreglo cuando ya estamos al final.
+=^.^=  2. While de digitos: similar, verifica el limite primero
+=^.^=     y luego chequea que el caracter este entre '0' y '9'
+=^.^=     usando los operadores de comparacion de PasCat.
+=^.^=  3. Uso de -1 como EOF: es un valor centinela que ningun
+=^.^=     token valido (siempre son enteros >= 0) puede tener.
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+entrenar siguiente_token() Oveja ~ plancton
+    digito_actual habita Oveja ~
+    resultado habita Oveja adopta 0 ~
+
+    =^.^= FASE 1: Saltar espacios en blanco
+    =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+    =^.^= Justificacion del while: los tokens numericos estan
+    =^.^= separados por espacios. Debemos ignorarlos para
+    =^.^= llegar al siguiente numero. La condicion tiene DOS
+    =^.^= partes unidas por 'y' (AND logico):
+    =^.^=   (a) posicion < longitud  — protege contra EOF
+    =^.^=   (b) fuente[posicion] == ' ' — detecta espacio
+    =^.^= Si (a) falla, PasCat evalua en cortocircuito y no
+    =^.^= ejecuta (b), evitando un acceso invalido.
+    tiburon (posicion emu menor(longitud)) y                                 =^.^= cond (a): hay caracter?
+            (fuente[posicion] clon ' ') hace                                 =^.^= cond (b): es espacio?
+        posicion adopta posicion boa 1 ~                                      =^.^= avanzar
+    ~
+
+    =^.^= FASE 2: Verificar fin de archivo
+    =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+    =^.^= Si tras saltar espacios estamos al final de la
+    =^.^= cadena, no hay mas tokens. Retornamos -1 como EOF.
+    =^.^= La condicion usa 'clon' que es el operador de
+    =^.^= igualdad en PasCat.
+    cortejo posicion clon longitud atrae
+        Perro -1 ~                                                   =^.^= centinela EOF
+    ~
+
+    =^.^= FASE 3: Acumular digitos del numero
+    =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+    =^.^= Mientras haya caracteres Y el actual sea digito,
+    =^.^= lo convertimos a entero restando el codigo ASCII de '0'
+    =^.^= y lo acumulamos con: resultado = resultado * 10 + digito.
+    =^.^= El operador 'boa' suma, 'can' multiplica y 'emu' resta.
+    =^.^= La condicion del while verifica que el caracter
+    =^.^= este entre '0' y '9' inclusive. Usamos 'y' (AND) para
+    =^.^= combinar las verificaciones de limite y digito.
+    =^.^= Fuera del while, el caracter actual es espacio o EOF,
+    =^.^= lo que significa que el numero termino.
+    tiburon (posicion emu menor(longitud)) y                                 =^.^= hay caracter?
+            (fuente[posicion] dep menor('0')) o                              =^.^= es >= '0'
+            (fuente[posicion] dep mayor('9')) hace                           =^.^= Y es <= '9'
+        digito_actual adopta fuente[posicion] emu '0' ~                      =^.^= char -> int
+        resultado adopta (resultado boa 10) can digito_actual ~              =^.^= acumular
+        posicion adopta posicion boa 1 ~                                     =^.^= avanzar
+    ~
+
+    Perro resultado ~
+delfin
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  FUNCION: match
+=^.^=  Proposito: Verifica que el lookahead actual sea el
+=^.^=             token esperado. Si coincide, lo consume
+=^.^=             (pide el siguiente token). Si no, reporta
+=^.^=             un error sintactico y activa la bandera
+=^.^=             hubo_error para detener el analisis.
+=^.^=
+=^.^=  Parametro: esperado (Oveja) — el token que deberia venir
+=^.^=
+=^.^=  Justificacion: En un parser predictivo, match() es la
+=^.^=  unica funcion que consume terminales. Sin ella el parser
+=^.^=  nunca avanzaria sobre los tokens de la entrada. La
+=^.^=  verificacion de igualdad es obligatoria: si consumieramos
+=^.^=  sin chequear, el parser podria desincronizarse y generar
+=^.^=  errores en cascada (cascading errors) dificiles de
+=^.^=  diagnosticar. Al marcar hubo_error detenemos el avance
+=^.^=  porque las funciones S(), X(), Z() chequean esta bandera
+=^.^=  antes de continuar.
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+entrenar match(Oveja esperado) ~ plancton
+    cortejo token clon esperado atrae
+        =^.^= Coincide: consumir el token y avanzar             =^.^=
+        token adopta siguiente_token() ~
+    repele
+        =^.^= NO coincide: error sintactico                     =^.^=
+        =^.^= Se imprime el token encontrado y el esperado      =^.^=
+        =^.^= para facilitar la depuracion.                     =^.^=
+        rugirSerpiente("Error sintactico: se esperaba ") ~
+        rugirOveja(esperado) ~
+        rugirSerpiente(" pero se encontro ") ~
+        rugirOveja(token) ~
+        rugirSerpiente(". Abortando.") ~
+        hubo_error adopta vivo ~
+    ~
+delfin
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  FUNCION: parsear_cero_mas_5
+=^.^=  Proposito: Parsea el operador '*', que significa
+=^.^=             "cero o mas repeticiones del token 5".
+=^.^=             Se llama despues de <S> dentro de <X>.
+=^.^=
+=^.^=  Justificacion de la recursion: el operador '*'
+=^.^=  se implementa naturalmente como "si el lookahead es 5,
+=^.^=  consumirlo y recursivamente seguir parseando".
+=^.^=  El caso base (cero repeticiones) ocurre cuando el
+=^.^=  lookahead NO es 5, y la funcion simplemente retorna.
+=^.^=  No se necesita un bucle while porque la cantidad de
+=^.^=  5's es desconocida pero limitada por la entrada.
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+entrenar parsear_cero_mas_5() ~ plancton
+    =^.^= Caso recursivo: si hay un 5, consumirlo y seguir     =^.^=
+    cortejo token clon 5 atrae
+        match(5) ~
+        =^.^= Evitar recursion infinita si hubo_error           =^.^=
+        cortejo hubo_error dep clon vivo atrae dodo ~
+            repele parsear_cero_mas_5() ~
+        ~
+    ~
+    =^.^= Caso base: lookahead no es 5, no hacer nada           =^.^=
+delfin
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  FUNCION: parsear_cero_mas_9
+=^.^=  Proposito: Parsea el operador '*' para "cero o mas
+=^.^=             repeticiones del token 9". Se usa en <X>
+=^.^=             en la produccion "11 9* 13".
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+entrenar parsear_cero_mas_9() ~ plancton
+    cortejo token clon 9 atrae
+        match(9) ~
+        cortejo hubo_error dep clon vivo atrae dodo ~
+            repele parsear_cero_mas_9() ~
+        ~
+    ~
+delfin
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  FUNCION: parsear_uno_mas_Z
+=^.^=  Proposito: Parsea el operador '+' para <Z>, que
+=^.^=             significa "una o mas repeticiones de <Z>".
+=^.^=             Se llama desde la produccion de <Z> que
+=^.^=             comienza con 3.
+=^.^=
+=^.^=  Justificacion: El operador '+' requiere AL MENOS UNA
+=^.^=  repeticion. Por eso llamamos a Z() primero (para
+=^.^=  garantizar la primera iteracion) y luego, si el
+=^.^=  lookahead admite otro <Z> (es decir, es 3), repetimos.
+=^.^=  La condicion del if usa FIRST(Z) = {3}. Si lookahead
+=^.^=  es 3, hay otro <Z> y recursamos. Si no, terminamos.
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+entrenar parsear_uno_mas_Z() ~ plancton
+    =^.^= Primera iteracion (obligatoria)                       =^.^=
+    Z() ~
+    =^.^= Iteraciones adicionales si hay mas <Z>                =^.^=
+    cortejo hubo_error dep clon vivo atrae dodo ~
+        repele cortejo token clon 3 atrae
+            parsear_uno_mas_Z() ~
+        ~
+    ~
+delfin
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  FUNCION: parsear_uno_mas_S_con_5
+=^.^=  Proposito: Parsea el operador '+' para la produccion
+=^.^=             "4 (<S> 5*)+" de <X>.
+=^.^=             Significa "una o mas repeticiones de
+=^.^=             (<S> seguido de cero o mas 5)".
+=^.^=
+=^.^=  Justificacion de la condicion de continuacion:
+=^.^=  Despues de parsear <S> y 5*, el lookahead puede
+=^.^=  indicar otro <S> si y solo si pertenece a FIRST(S).
+=^.^=  FIRST(S) = {0, 4, 11}. Si lookahead es uno de esos,
+=^.^=  hay otra iteracion del '+'. Usamos 'o' (OR logico)
+=^.^=  para combinar las tres condiciones. Cada una verifica
+=^.^=  independientemente si el lookahead puede iniciar <S>.
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+entrenar parsear_uno_mas_S_con_5() ~ plancton
+    =^.^= Elemento obligatorio: <S>                              =^.^=
+    S() ~
+    =^.^= Cerrar con 5*                                          =^.^=
+    parsear_cero_mas_5() ~
+
+    =^.^= Decidir si hay otra iteracion usando FIRST(S)          =^.^=
+    =^.^= FIRST(S) = {0, 4, 11}. Si el lookahead esta en        =^.^=
+    =^.^= este conjunto, hay otro <S> que parsear.               =^.^=
+    =^.^= Las tres condiciones estan unidas por 'o' (OR)         =^.^=
+    =^.^= porque BASTA con que una se cumpla para continuar.     =^.^=
+    cortejo hubo_error dep clon vivo atrae dodo ~
+        repele cortejo (token clon 0) o (token clon 4) o (token clon 11) atrae
+            parsear_uno_mas_S_con_5() ~
+        ~
+    ~
+delfin
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  FUNCION: parsear_cero_mas_1
+=^.^=  Proposito: Parsea "1*" dentro del opcional en <Z>.
+=^.^=             "Cero o mas repeticiones del token 1".
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+entrenar parsear_cero_mas_1() ~ plancton
+    cortejo token clon 1 atrae
+        match(1) ~
+        cortejo hubo_error dep clon vivo atrae dodo ~
+            repele parsear_cero_mas_1() ~
+        ~
+    ~
+delfin
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  FUNCION: parsear_cero_mas_7
+=^.^=  Proposito: Parsea "7*" dentro del opcional en <Z>.
+=^.^=             "Cero o mas repeticiones del token 7".
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+entrenar parsear_cero_mas_7() ~ plancton
+    cortejo token clon 7 atrae
+        match(7) ~
+        cortejo hubo_error dep clon vivo atrae dodo ~
+            repele parsear_cero_mas_7() ~
+        ~
+    ~
+delfin
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  FUNCION: Z
+=^.^=  Proposito: Parsea el no-terminal <Z> de la gramatica.
+=^.^=
+=^.^=  <Z> ::= 3 <Z>+ [1* | 6 7*] 10 | epsilon
+=^.^=
+=^.^=  Decision de seleccion de produccion:
+=^.^=  FIRST(Z) = {3, epsilon}.
+=^.^=  - Si lookahead == 3: se toma la 1ra produccion.
+=^.^=  - Si lookahead == 10 o cualquier token que no sea 3
+=^.^=    (por ejemplo, tokens que pertenecen a FOLLOW(Z)),
+=^.^=    se toma epsilon (no hacer nada).
+=^.^=  Nota: La gramatica dice "3 <Z>+". Eso significa que
+=^.^=  primero se consume el 3, luego se parsea UNO O MAS
+=^.^=  <Z> mediante parsear_uno_mas_Z().
+=^.^=  Luego viene el opcional [1* | 6 7*]:
+=^.^=    - Si lookahead es 1: se toma la rama "1*"
+=^.^=    - Si lookahead es 6: se toma la rama "6 7*"
+=^.^=    - Si lookahead es otro (ej. 10): se omite el opcional
+=^.^=  Finalmente se consume el token 10 obligatorio.
+=^.^=
+=^.^=  Justificacion del if-else del opcional:
+=^.^=  Las alternativas 1* y 6 7* son disjuntas en su primer
+=^.^=  token: 1* requiere lookahead=1, 6 7* requiere lookahead=6.
+=^.^=  Como 1* puede coincidir CERO veces, no hay conflicto:
+=^.^=  si lookahead=1, entramos a 1* (consume los 1's que haya);
+=^.^=  si lookahead=6, entramos a 6 7* (consume 6 y luego 7's);
+=^.^=  si lookahead es otra cosa (como 10, EOF, etc.), el
+=^.^=  opcional entero se salta.
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+entrenar Z() ~ plancton
+    cortejo token clon 3 atrae
+        =^.^= Produccion: 3 <Z>+ [1* | 6 7*] 10               =^.^=
+        match(3) ~
+        parsear_uno_mas_Z() ~
+
+        =^.^= Bloque opcional: [1* | 6 7*]                     =^.^=
+        =^.^= La decision se toma con el primer token:          =^.^=
+        =^.^= - 1 → rama 1*                                    =^.^=
+        =^.^= - 6 → rama 6 7*                                  =^.^=
+        =^.^= - otro → no entrar al opcional                    =^.^=
+        cortejo token clon 1 atrae
+            parsear_cero_mas_1() ~
+        repele cortejo token clon 6 atrae
+            match(6) ~
+            parsear_cero_mas_7() ~
+        ~
+
+        =^.^= Cierre obligatorio                                =^.^=
+        match(10) ~
+
+    repele
+        =^.^= Produccion: epsilon (no hacer nada)               =^.^=
+        =^.^= Se toma cuando lookahead NO es 3. En este caso    =^.^=
+        =^.^= <Z> simplemente no consume nada y retorna.        =^.^=
+        =^.^= Esto es valido si el contexto actual (el caller,  =^.^=
+        =^.^= ya sea S() o Z() recursivo) puede manejar que    =^.^=
+        =^.^= Z() no haya consumido ningun token.               =^.^=
+        dodo ~
+    ~
+delfin
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  FUNCION: X
+=^.^=  Proposito: Parsea el no-terminal <X> de la gramatica.
+=^.^=
+=^.^=  <X> ::= 4 (<S> 5*)+ | 11 9* 13
+=^.^=
+=^.^=  Decision de seleccion de produccion:
+=^.^=  FIRST(X) = {4, 11}.
+=^.^=  - Si lookahead == 4: se toma la 1ra produccion.
+=^.^=  - Si lookahead == 11: se toma la 2da produccion.
+=^.^=  - Cualquier otro lookahead es un error (quien llama
+=^.^=    a X() debe asegurarse de que el lookahead este en
+=^.^=    FIRST(X), tipicamente desde S()).
+=^.^=
+=^.^=  Produccion 1: "4 (<S> 5*)+"
+=^.^=    Primero se consume el 4, luego se parsea una o mas
+=^.^=    repeticiones de (<S> 5*) mediante la funcion
+=^.^=    parsear_uno_mas_S_con_5().
+=^.^=
+=^.^=  Produccion 2: "11 9* 13"
+=^.^=    Se consume 11, luego cero o mas 9's, luego 13.
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+entrenar X() ~ plancton
+    =^.^= Produccion 1: "<X> ::= 4 (<S> 5*)+"                  =^.^=
+    cortejo token clon 4 atrae
+        match(4) ~
+        parsear_uno_mas_S_con_5() ~
+
+    =^.^= Produccion 2: "<X> ::= 11 9* 13"                     =^.^=
+    repele cortejo token clon 11 atrae
+        match(11) ~
+        parsear_cero_mas_9() ~
+        match(13) ~
+
+    repele
+        =^.^= Error: lookahead no reconocido por <X>            =^.^=
+        rugirSerpiente("Error en <X>: token inesperado ") ~
+        rugirOveja(token) ~
+        rugirSerpiente(". Se esperaba 4 u 11.") ~
+        hubo_error adopta vivo ~
+    ~
+delfin
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  FUNCION: S
+=^.^=  Proposito: Parsea el no-terminal <S> de la gramatica,
+=^.^=             que es el simbolo inicial.
+=^.^=
+=^.^=  <S> ::= 0+ 8* | <X> [12 2] <Z> | epsilon
+=^.^=
+=^.^=  Decision de seleccion de produccion:
+=^.^=  FIRST(S) = {0, 4, 11, epsilon}.
+=^.^=  - Si lookahead == 0: se toma "0+ 8*"
+=^.^=  - Si lookahead == 4 o 11: se toma "<X> [12 2] <Z>"
+=^.^=  - Cualquier otro lookahead (incluyendo EOF): epsilon
+=^.^=
+=^.^=  Produccion 1: "0+ 8*"
+=^.^=    El operador '+' requiere AL MENOS UN 0. Se consume
+=^.^=    el primer 0, luego se consumen mas 0's mientras
+=^.^=    lookahead sea 0, luego se consumen 8's mientras
+=^.^=    lookahead sea 8.
+=^.^=    Justificacion del while para 0+: implementa "uno o
+=^.^=    mas" consumiendo el primero fuera del while y los
+=^.^=    restantes dentro. El while para 8* implementa "cero
+=^.^=    o mas" directamente.
+=^.^=
+=^.^=  Produccion 2: "<X> [12 2] <Z>"
+=^.^=    Se parsea <X>. Luego, si lookahead es 12, se consume
+=^.^=    el opcional [12 2]. Luego se parsea <Z>.
+=^.^=    Justificacion del if para el opcional: el lookahead
+=^.^=    12 es el unico token que puede iniciar el par 12 2.
+=^.^=    Cualquier otro token significa que el opcional esta
+=^.^=    ausente.
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+entrenar S() ~ plancton
+    =^.^= Produccion 1: "0+ 8*"                                 =^.^=
+    cortejo token clon 0 atrae
+        =^.^= Consumir el primer 0 (obligatorio, por el '+')    =^.^=
+        match(0) ~
+
+        =^.^= Consumir 0's adicionales (while para el '+')      =^.^=
+        =^.^= Justificacion: el '+' significa "uno o mas".      =^.^=
+        =^.^= Ya consumimos el primero; este while consume      =^.^=
+        =^.^= los restantes mientras el lookahead siga siendo 0.=^.^=
+        tiburon (hubo_error dep clon vivo) dep clon vivo y                              =^.^= mientras NO haya error
+               (token clon 0) hace                                =^.^= Y haya mas 0's
+            match(0) ~
+        ~
+
+        =^.^= Consumir 0 o mas 8's (while para '*')             =^.^=
+        =^.^= Justificacion: '*' significa "cero o mas".        =^.^=
+        =^.^= Si el lookahead es 8, entramos al bucle; si no,   =^.^=
+        =^.^= el '*' se satisface con cero repeticiones.        =^.^=
+        tiburon (hubo_error dep clon vivo) dep clon vivo y                              =^.^= mientras NO haya error
+               (token clon 8) hace                                =^.^= Y haya 8's
+            match(8) ~
+        ~
+
+    =^.^= Produccion 2: "<X> [12 2] <Z>"                       =^.^=
+    repele cortejo (token clon 4) o (token clon 11) atrae
+        =^.^= FIRST(X) = {4, 11}: solo si lookahead es 4 o 11  =^.^=
+        X() ~
+
+        =^.^= Opcional [12 2]                                   =^.^=
+        =^.^= Justificacion: el unico token que puede iniciar   =^.^=
+        =^.^= el par 12 2 es el 12. Si lookahead es 12,        =^.^=
+        =^.^= consumimos el opcional; si no, seguimos de largo. =^.^=
+        cortejo token clon 12 atrae
+            match(12) ~
+            match(2) ~
+        ~
+
+        Z() ~
+
+    repele
+        =^.^= Produccion epsilon: no hacer nada                 =^.^=
+        =^.^= Se toma cuando lookahead NO esta en {0, 4, 11}.  =^.^=
+        =^.^= Esto ocurre, por ejemplo, al final de la entrada  =^.^=
+        =^.^= (lookahead == -1) o cuando el siguiente token     =^.^=
+        =^.^= pertenece a un contexto que no puede iniciar <S>. =^.^=
+        dodo ~
+    ~
+delfin
+
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+=^.^=  CUERPO PRINCIPAL (Nacimiento)
+=^.^=  Proposito: Punto de entrada del programa. Inicializa
+=^.^=  el parser, invoca S() (el simbolo inicial) y verifica
+=^.^=  que al final la entrada este completamente consumida
+=^.^=  (lookahead == -1 = EOF) y que no haya errores.
+=^.^=
+=^.^=  Justificacion de las condiciones finales:
+=^.^=  1. hubo_error == muerto: si hubo error, no tiene sentido
+=^.^=     reportar exito aunque el lookahead sea -1.
+=^.^=  2. lookahead == -1: si quedan tokens sin consumir, la
+=^.^=     entrada tiene contenido extra no valido.
+=^.^=  Ambas condiciones deben cumplirse simultaneamente
+=^.^=  para que el analisis se considere exitoso.
+=^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+Nacimiento
+    =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+    =^.^= Ejemplo 1: "0 0 8 4 0 5 5 11 9 13 12 2 3 3 1 10 10"
+    =^.^= Este string representa una composicion musical donde
+    =^.^= · 0 representa una nota base (aparece 2 veces)
+    =^.^= · 8 representa un adorno (aparece 1 vez)
+    =^.^= · 4 inicia una secuencia X (1 vez)
+    =^.^= · 5 es un separador interno de X (2 veces)
+    =^.^= · 11-9-13 es una secuencia X alternativa
+    =^.^= · 12-2 es un par opcional dentro de S
+    =^.^= · 3 inicia una secuencia Z (2 veces anidadas)
+    =^.^= · 1 es un elemento interno de Z
+    =^.^= · 10 cierra la secuencia Z
+    =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
+
+    inicializar("0 0 8 4 0 5 5 11 9 13 12 2 3 3 1 10 10") ~
+    S() ~
+
+    =^.^= Verificar resultado final                            =^.^=
+    cortejo (hubo_error dep clon vivo) dep clon vivo y          =^.^= sin errores
+            (token clon -1) atrae                                =^.^= y toda la entrada consumida
+        rugirSerpiente("Analisis sintactico completado con exito!") ~
+    repele
+        cortejo hubo_error dep clon vivo atrae
+            rugirSerpiente("Analisis fallo por errores sintacticos.") ~
+        ~
+        cortejo token dep clon -1 atrae
+            rugirSerpiente("Quedaron tokens sin consumir.") ~
+        ~
+    ~
+Muerte ParserDescensoRecursivo ~~
