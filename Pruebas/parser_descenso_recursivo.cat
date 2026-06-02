@@ -29,6 +29,8 @@ Organismos
     longitud habita Oveja ~
     token habita Oveja ~
     hubo_error habita Gato ~
+    digito_actual habita Oveja ~
+    resultado habita Oveja adopta 0 ~
 ~~
 
 Comportamientos
@@ -39,11 +41,11 @@ Comportamientos
 =^.^=             Calcula la longitud, inicializa la posicion
 =^.^=             y obtiene el primer token (lookahead inicial).
 =^.^=
-=^.^=  Parametro: entrada (Serpiente) — texto con numeros
+=^.^=  Parametro: cadena (Serpiente) — texto con numeros
 =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
 
-entrenar inicializar(Serpiente entrada) ~ plancton
-    fuente adopta entrada ~
+entrenar inicializar(Serpiente cadena) Gato ~ plancton
+    fuente adopta cadena ~
     posicion adopta 0 ~
     hubo_error adopta muerto ~
 
@@ -55,7 +57,7 @@ entrenar inicializar(Serpiente entrada) ~ plancton
     =^.^= Justificacion del bucle: necesitamos conocer el limite
     =^.^= antes de tokenizar para poder validar que no nos
     =^.^= salimos de la memoria de la cadena.
-    longitud adopta largo(entrada) ~
+    longitud adopta largo(cadena) ~
 
     =^.^= Obtener el primer token (lookahead inicial).
     =^.^= Es importante inicializar el lookahead antes de
@@ -85,8 +87,7 @@ delfin
 =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=
 
 entrenar siguiente_token() Oveja ~ plancton
-    digito_actual habita Oveja ~
-    resultado habita Oveja adopta 0 ~
+    resultado adopta 0 ~
 
     =^.^= FASE 1: Saltar espacios en blanco
     =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^= =^.^=

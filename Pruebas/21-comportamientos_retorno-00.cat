@@ -6,7 +6,7 @@ Organismos
 ~~ 
 
 Comportamientos
-    entrenar duplicar(Oveja n) Oveja
+    entrenar duplicar(Oveja n) Oveja ~
     plancton
         Perro n can 2 ~
     delfin

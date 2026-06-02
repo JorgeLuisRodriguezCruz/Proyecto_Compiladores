@@ -2,6 +2,7 @@
 Reino PruebaPulpo ~
 Organismos
     opcion habita Oveja adopta 2 ~
+~~
 Comportamientos
     entrenar dummy ~ plancton delfin
 ~~
@@ -14,7 +15,7 @@ Nacimiento
         tentaculo 2 :
             rugirSerpiente("Opcion 2 elegida") ~
             liebre ~
-        cabeza :
+        cabeza
             rugirSerpiente("Opcion por defecto") ~
-    delfin ~
+    delfin
 Muerte PruebaPulpo ~~

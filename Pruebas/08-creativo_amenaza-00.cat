@@ -11,9 +11,9 @@ Comportamientos
 ~~
 Nacimiento
     =^.^= Cuando el nivel de peligro de la bandera aumente lo suficiente se sale del ciclo
-    tiburon amenaza bandera clon vivo sangre
+    tiburon bandera clon vivo sangre
         plancton
-            acechar bandera ~         =^.^= Esta instruccion incrementa el nivel de peligro
+            acechar bandera ~
             rugirSerpiente(mensaje) ~
         delfin ~
     mensaje adopta "Ahora estoy en peligro..." ~

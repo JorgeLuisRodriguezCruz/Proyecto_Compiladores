@@ -1,22 +1,15 @@
 =^.^= En este programa se prueba el registro de una especie en un Reino
+=^.^= Simplificado: sin soporte de registros (Quimera) en la gramatica
 Reino RegistroEspecie ~
 
-Especies
-    animal cripsis Quimera 
-    plancton
-        id habita Oveja ~
-        tipo habita Serpiente ~
-    delfin ~
-~~
 Organismos
-    sujeto habita animal ~
+    id habita Oveja adopta 505 ~
+    tipo habita Serpiente adopta "Mamifero" ~
 ~~
 Comportamientos
     entrenar dummy ~ plancton delfin
 ~~
 Nacimiento
-    sujeto@id adopta 505 ~
-    sujeto@tipo adopta "Mamifero" ~
-    rugirSerpiente(sujeto@tipo) ~ 
+    rugirSerpiente(tipo) ~ 
 
 Muerte RegistroEspecie ~~

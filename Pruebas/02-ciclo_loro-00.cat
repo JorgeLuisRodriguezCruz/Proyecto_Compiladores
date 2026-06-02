@@ -8,15 +8,11 @@ Organismos
 Comportamientos
     entrenar dummy ~ plancton delfin
 ~~
-Nacimiento 
-    loro 
-        plancton
-            =^.^= Se incrementa en 1 el valor de la variable
-            Acariciar contador ~
-            rugirSerpiente("Estoy en el ciclo") ~
-        delfin
+Nacimiento
+    loro
+        Acariciar contador ~
+        rugirSerpiente("Estoy en el ciclo") ~
     mudo contador presa 50 ~
-    =^.^= Equivalencia - until (contador < 50);
-    rugirSerpiente("Por fin ya sali") ~ 
+    rugirSerpiente("Por fin ya sali") ~
 
 Muerte loroCiclon ~~

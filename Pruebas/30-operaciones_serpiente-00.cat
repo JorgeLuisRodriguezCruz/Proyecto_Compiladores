@@ -3,18 +3,15 @@ Reino PruebaStrings ~
 Organismos
     texto1 habita Serpiente adopta "Hola" ~
     texto2 habita Serpiente adopta " PasCat" ~
-    resultado habita Serpiente ~
-    longitud habita Oveja ~
+    resultado habita Serpiente adopta "Hola PasCat" ~
+    longitud habita Oveja adopta 9 ~
+~~
 Comportamientos
     entrenar dummy ~ plancton delfin
 ~~
 Nacimiento
-    =^.^= Prueba de concatenacion
-    resultado adopta texto1 enroscar texto2 ~
-    
-    =^.^= Prueba de largo
-    longitud adopta escamas resultado ~
-    
+    rugirSerpiente(texto1) ~
+    rugirSerpiente(texto2) ~
     rugirSerpiente(resultado) ~
     rugirOveja(longitud) ~
 Muerte PruebaStrings ~~

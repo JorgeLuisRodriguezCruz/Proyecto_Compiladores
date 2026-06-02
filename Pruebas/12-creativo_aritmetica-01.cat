@@ -1,33 +1,32 @@
-=^.^= Este programa es una prueba de la instruccion aritmetica >>
-=^.^= En este tenemos una funcion que recibe dos numeros y eleva la base segun una potencia que reciba y funciona hasta la potencia de 5.
+=^.^= En este programa se prueba la instruccion aritmetica >>
+=^.^= Funcion que recibe base y potencia, eleva hasta 5
 Reino aritmeticaCreativa ~ 
 
 Organismos
     numero habita Oveja adopta 2 ~  
 ~~ 
 Comportamientos
-    =^.^= Esta funcion recibe dos numeros la base y la potencia 
-    =^.^= La potencia puede llegar hasta 5 
-    entrenar elevar(Oveja base, potencia) Oveja
+    entrenar elevar_base(Oveja base ~ Oveja potencia) Oveja ~
     plancton
         pulpo potencia
-        tentaculo 2 :
-            Perro base >> bajo ~
-        tentaculo 3 :
-            Perro base >> medio ~
-        tentaculo 4 :
-            Perro base >> alto ~
-        tentaculo 5 :
-            Perro base >> maximo ~
-        cabeza :
-            Perro base >> minimo ~        
+        plancton
+            tentaculo 2 :
+                Perro base >> bajo ~
+            tentaculo 3 :
+                Perro base >> medio ~
+            tentaculo 4 :
+                Perro base >> alto ~
+            tentaculo 5 :
+                Perro base >> maximo ~
+            cabeza
+                Perro base >> minimo ~
+        delfin
     delfin
 ~~
 
 Nacimiento
-    numero adopta elevar(2, 2) ~
+    numero adopta elevar_base(2, 2) ~
 
-    =^.^= Aqui se identifica si la operacion da el resultado esperado
     cortejo numero clon 4
     atrae
         rugirSerpiente("2 elevado al cuadrado es 4.") ~ 

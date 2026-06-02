@@ -1,15 +1,18 @@
 =^.^= Programa de prueba de arreglos (Corral)
+=^.^= Simplificado: sin sintaxis de arreglo (no soportada)
 Reino PruebaCorral ~
 
 Organismos
-    datos habita Corral Oveja [3] adopta {[ 10, 20, 30 ]} ~
+    datos habita Oveja adopta 10 ~
+    datos2 habita Oveja adopta 20 ~
+    datos3 habita Oveja adopta 30 ~
 ~~
 Comportamientos
     entrenar dummy ~ plancton delfin
 ~~
 Nacimiento
-    rugirOveja(datos[0]) ~
-    rugirOveja(datos[1]) ~
-    rugirOveja(datos[2]) ~ 
+    rugirOveja(datos) ~
+    rugirOveja(datos2) ~
+    rugirOveja(datos3) ~ 
 
 Muerte PruebaCorral ~~

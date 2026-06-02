@@ -3,7 +3,7 @@
 Reino PruebaRutina ~ 
 
 Comportamientos
-    ritual aviso()
+    ritual aviso() ~
     plancton
         rugirSerpiente("Alerta de bioma") ~
     delfin

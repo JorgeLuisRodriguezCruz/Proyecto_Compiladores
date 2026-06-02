@@ -35,6 +35,9 @@ class ParserPasCat:
             if lexema_lower in ('eof',) or (lexema_str == '' and tipo in (0, -1, 'EOF')): 
                 return 'EOF'
 
+            if lexema_lower in self.terminales_gikgram:
+                return self.terminales_gikgram[lexema_lower]
+
             if tipo == 10:
                 if lexema_lower in ('muerto', 'vivo', 'minimo', 'bajo', 'medio', 'alto', 'maximo'):
                     return lexema_lower
@@ -52,9 +55,6 @@ class ParserPasCat:
             if tipo == 21: return 'lit-huella'
             if tipo == 22: return 'lit-serpiente'
             if tipo == 24: return 'lit-colm'
-
-            if lexema_lower in self.terminales_gikgram:
-                return self.terminales_gikgram[lexema_lower]
 
             return str(self.token_actual.lexema)
 

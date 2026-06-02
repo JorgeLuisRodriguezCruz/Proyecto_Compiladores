@@ -4,8 +4,10 @@ Documentación/
 *.obj
 *.map
 
+__pycache__
 conjuntos
 source
+.venv
 
 generar_tabla.py
 convertir_tests.py
